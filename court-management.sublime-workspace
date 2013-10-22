@@ -1,0 +1,525 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"nav",
+				"navBarHtml"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "docs/api.txt",
+			"settings":
+			{
+				"buffer_size": 671,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/routes/web.js",
+			"settings":
+			{
+				"buffer_size": 1136,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/layout.ejs",
+			"settings":
+			{
+				"buffer_size": 539,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/index.ejs",
+			"settings":
+			{
+				"buffer_size": 58,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/views/inscripcion.ejs",
+			"settings":
+			{
+				"buffer_size": 6071,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/views/galeria.ejs",
+			"settings":
+			{
+				"buffer_size": 1190,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 965,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/api.js",
+			"settings":
+			{
+				"buffer_size": 577,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/views/inscripcion.ejs",
+		"/home/jorge/Proyectos/CourtManagement/views/header.ejs",
+		"/home/jorge/Proyectos/CourtManagement/views/layout.ejs",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/views/footer.ejs",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/views/nav-bar.ejs",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/views/ranking.ejs",
+		"/home/jorge/Proyectos/CourtManagement/routes/index.js",
+		"/home/jorge/Proyectos/CourtManagement/views/index.ejs",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/views/fileCache.js",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/routes/api.js",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/app.js",
+		"/home/jorge/Proyectos/CourtManagement/routes/api.js",
+		"/home/jorge/Proyectos/JavaEE/sistemas-web/PersistentCookies/src/es/ceura/web/cookies/PersistentServlet.java",
+		"/home/jorge/Proyectos/JavaEE/sistemas-web/PersistentCookies/src/es/ceura/web/cookies/Utils.java",
+		"/home/jorge/Proyectos/CourtManagement/public/js/lib/backbone.js",
+		"/home/jorge/Proyectos/CourtManagement/node_modules/ejs/Readme.md",
+		"/home/jorge/Proyectos/CourtManagement/app.js",
+		"/home/jorge/Proyectos/CourtManagement/node_modules/ejs/.travis.yml",
+		"/home/jorge/Proyectos/CourtManagement/node_modules/ejs/.npmignore",
+		"/home/jorge/Applications/eclipse/eclipse",
+		"/home/jorge/Applications/eclipse/eclipse.ini",
+		"/home/jorge/Dropbox/Codemotion/codemotion.txt",
+		"/home/jorge/Proyectos/CourtManagement/phpunit.xml",
+		"/home/jorge/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/jorge/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/jorge/Proyectos/CourtManagement/composer.json",
+		"/home/jorge/Proyectos/CourtManagement/artisan",
+		"/home/jorge/Proyectos/CourtManagement/app/config/database.php",
+		"/home/jorge/Proyectos/CourtManagement/app/start/local.php",
+		"/home/jorge/Proyectos/CourtManagement/app/routes.php",
+		"/home/jorge/Proyectos/CourtManagement/server.php",
+		"/home/jorge/Proyectos/CourtManagement/public/index.php",
+		"/home/jorge/Proyectos/CourtManagement/app/models/User.php",
+		"/home/jorge/Proyectos/CourtManagement/public/.htaccess",
+		"/home/jorge/Proyectos/CourtManagement/bootstrap/paths.php",
+		"/etc/php5/apache2/php.ini",
+		"/home/jorge/Proyectos/Tumpi/BridgeSocialDj/src/net/tumpi/bridge/conexion/SocketServidor.java",
+		"/home/jorge/Proyectos/Tumpi/BridgeSocialDj/src/net/tumpi/bridge/conexion/Cliente.java",
+		"/home/jorge/Proyectos/Tumpi/BridgeSocialDj/src/net/tumpi/bridge/main/TumpiBridge.java",
+		"/home/jorge/Proyectos/Tumpi/BridgeSocialDj/src/net/tumpi/bridge/conexion/WebSocketServer.java",
+		"/home/jorge/Proyectos/Tumpi/BridgeSocialDj/src/net/tumpi/bridge/conexion/ServerSocketListener.java",
+		"/home/jorge/Proyectos/Tumpi/BridgeSocialDj/src/net/tumpi/bridge/managers/ServerManager.java",
+		"/home/jorge/Proyectos/Tumpi/BridgeSocialDj/src/net/tumpi/bridge/main/TO DO",
+		"/home/jorge/Proyectos/Tumpi/BridgeSocialDj/src/net/tumpi/bridge/config/Config.java",
+		"/home/jorge/Proyectos/Tumpi/BridgeSocialDj/src/net/tumpi/bridge/config/config.properties",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/models/helpers.js",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/Todo",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/routes/web.js",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/public/js/cache.js",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/public/js/views.js",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/public/js/main.js",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/models/schemas.js",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/public/js/models.js",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/public/js/router.js",
+		"/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/views/index.ejs",
+		"/home/jorge/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/usr/src/fglrx-12.104/firegl_public.c",
+		"/var/log/Xorg.0.log",
+		"/usr/src/fglrx-12.104/kcl_str.h",
+		"/usr/src/fglrx-12.104/drmP.h",
+		"/usr/src/fglrx-12.104/drm_proc.h",
+		"/usr/src/fglrx-12.104/kcl_debug.c",
+		"/usr/src/fglrx-12.104/kcl_agp.c",
+		"/etc/gnome/defaults.list",
+		"/home/jorge/defaults.list"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"require",
+			"conexion",
+			".",
+			"conditions",
+			", active: false",
+			"active: true,",
+			"res.send",
+			"console",
+			"openGl",
+			"xorg",
+			"mesa",
+			"xorg",
+			"font",
+			"gedit.desktop"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"subl;gedit.desktop"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "docs/api.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 671,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								670,
+								670
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/routes/web.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1136,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/layout.ejs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								531,
+								531
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/index.ejs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 58,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22,
+								22
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/views/inscripcion.ejs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6071,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 57.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/jorge/Proyectos/padel-moratalaz/padel-moratalaz/views/galeria.ejs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1190,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1190,
+								1190
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 965,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								455,
+								455
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "routes/api.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 577,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								94,
+								94
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"project": "court-management.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 287.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 1
+	}
+}

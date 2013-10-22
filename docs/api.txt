@@ -1,0 +1,12 @@
+GET /tenis -> Devuelve las pistas con categoría de tenis (shallow).
+GET /padel -> Devuelve las pistas con categoría de padel (shallow).
+GET /pistas/:id -> Devuelve las horas de una pista determinada.
+POST /hora/:id -> Realiza una reserva para la pista.
+POST /login -> Permite al usuario logearse.
+
+------------- Esquema de pantallas ----------------
+1. Pantalla de Home, permite al usuario loguearse, darse de alta en el sistema y ofrece una breve descripción del funcionamiento del sistema,
+    ¿Últimas reservas?
+2. Pantalla de pistas (Tenis o Padel), una página con un sistema grid mediante masonry por cada pista.
+---------------------------------------------------
+
