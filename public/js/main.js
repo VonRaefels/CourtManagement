@@ -5,7 +5,7 @@ var App = {
         App._this = that;
         return function(){
             that.pistas = new Models.Pistas();
-            that.pistas.fetch();
+            that.pistas.reset(<%= pistas %>);
         }
     }
 }
