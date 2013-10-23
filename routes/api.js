@@ -1,5 +1,4 @@
 
-
 exports.getHoras = function(req, res){
     var id = req.param('id');
     var data = [{_id: 1, hora: "7:30", reserva: "74"}, {_id: 2, hora: "9", reserva: "-1"}

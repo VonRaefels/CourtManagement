@@ -15,19 +15,8 @@
 <script src="js/lib/handlebars.js"></script>
 <script src="js/views.js"></script>
 <script src="js/models.js"></script>
-<!-- <script src="js/main.js"></script> -->
 <script>
-    var App = {
-        pistas: null,
-        init: function(){
-            App.pistas = new Models.Pistas();
-            App.pistas.reset(<%- JSON.stringify(pistas) %>);
-            App.pistas.models.forEach(function(model){
-                var $el = new PistaView({model: model}).render().$el;
-                $('#pistas').append($el);
-            })
-        }
-    }
-    $(document).ready(App.init);
+    pistas = new Models.Pistas();
+    pistas.reset(<%- JSON.stringify(pistas) %>);
 </script>
-
+<script src="js/main.js"></script>
