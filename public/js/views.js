@@ -21,7 +21,15 @@ var PistaView = Backbone.View.extend({
 var HoraView = Backbone.View.extend({
     id: function(){ return 'hora-' + this.model.id; },
     tagName: 'div',
-    className: 'hora',
+    className: function(){
+        var className = 'hora';
+        if(this.model.get('reserva') === undefined){
+            className += ' libre';
+        }else{
+            className += ' ocupada';
+        }
+        return className;
+    },
     template: Handlebars.compile($('#hora-template').html()),
     render: function(){
         this.$el.append(this.template(this.model.toJSON()));

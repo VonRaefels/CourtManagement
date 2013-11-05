@@ -8,8 +8,18 @@ var App = {
                 pista.cuadro = collection;
                 var $el = new PistaView({model: pista}).render().$el;
                 $('#pistas').append($el);
+                horaEl = $($el.children('.horas')[0]);
+                App.masonry(horaEl);
             };
             cuadro.fetch({success: successCb});
+        });
+    },
+    masonry: function($el){
+        var $container = $($el);
+        $container.masonry({
+            isAnimated: true,
+            itemSelector: '.hora',
+            gutter: 10
         });
     }
 }

@@ -1,9 +1,21 @@
 <script type="text/x-handlebars-template" id="pista-template">
         <h2>{{nombre}}</h2>
         <div class="horas"></div>
+        <hr/>
+        <div class="clear"></div>
 </script>
 
 <script type="text/x-handlebars-template" id="hora-template">
-    <label>{{hora}}</label></br>
-    <label>{{reserva}}</label>
+    <label class="lbl-hora">{{hora}}</label>
+    <hr/>
+    <label class="lbl-reserva">
+        {{#if reserva}}
+            {{reserva}}
+        {{else}}
+            <div class="asterisk">*</div>
+        {{/if}}
+    </label>
+
 </script>
+
+
