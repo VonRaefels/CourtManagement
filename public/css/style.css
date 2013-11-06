@@ -1,151 +1,112 @@
-.hora{
-    float: left;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    width: 150px;
-    height: 150px;
-    text-align: center;
-    vertical-align: middle;
-    padding: 10px;
-    cursor: pointer;
-    box-shadow: none;
-    box-shadow: 1px 1px 4px #D0D0D0;
-    moz-box-shadow: 1px 1px 4px #D0D0D0;
+/*
+ * Hora
+ */
+.hora {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  float: left;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  box-shadow: none;
+  box-shadow: 1px 1px 4px #D0D0D0;
+  moz-box-shadow: 1px 1px 4px #D0D0D0;
+  border-radius: 5.2px;
+  padding: 13px;
+  margin-bottom: 19.5px;
+  width: 130px;
+  height: 130px;
 }
-
-.clear{
-    clear: both;
+.hora hr {
+  background-color: #969696;
+  border: 0;
+  color: #969696;
+  height: 2.6px;
+  width: 80%;
+  margin-top: 0;
+  margin-bottom: 19.5px;
 }
-
-.hora hr{
-    background-color: #969696;
-    border: 0;
-    color: #969696;
-    height: 2px;
-    width: 80%;
-    margin-top: 0;
-    margin-bottom: 10px;
+.hora .lbl-hora {
+  letter-spacing: 1px;
+  color: #969696;
+  font-size: 18.571428571428573px;
+  font-weight: bold;
 }
-.hora:hover{
-    box-shadow: 4px 4px 4px #D0D0D0;
-    moz-box-shadow: 4px 4px 4px #D0D0D0;
+.hora .lbl-reserva {
+  letter-spacing: 1px;
+  color: #757575;
+  font-size: 32.5px;
+  font-weight: bold;
+  margin-top: -6.5px;
 }
-
-.libre{
-    text-shadow: 1px 1px 1px #F6F6F6;
-    border-color: #D0D0D0;
-    background-image: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #7FF092),
-        color-stop(1, #63CF75)
-    );
-    background-image: -o-linear-gradient(bottom, #7FF092 0%, #63CF75 100%);
-    background-image: -moz-linear-gradient(bottom, #7FF092 0%, #63CF75 100%);
-    background-image: -webkit-linear-gradient(bottom, #7FF092 0%, #63CF75 100%);
-    background-image: -ms-linear-gradient(bottom, #7FF092 0%, #63CF75 100%);
-    background-image: linear-gradient(to bottom, #7FF092 0%, #63CF75 100%);
+.hora .asterisk {
+  font-size: 43.333333333333336px;
 }
-
-.libre:hover{
-    background-image: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #EEEEEE),
-        color-stop(1, #F9F9F9)
-    );
-    background-image: -o-linear-gradient(bottom, #63CF75 0%, #99FFAC 100%);
-    background-image: -moz-linear-gradient(bottom, #63CF75 0%, #99FFAC 100%);
-    background-image: -webkit-linear-gradient(bottom, #63CF75 0%, #99FFAC 100%);
-    background-image: -ms-linear-gradient(bottom, #63CF75 0%, #99FFAC 100%);
+.hora:hover {
+  box-shadow: 4px 4px 4px #D0D0D0;
+  moz-box-shadow: 4px 4px 4px #D0D0D0;
 }
-
-.libre:active{
-    background-color: #77E88A;
-    background-image: none;
-    box-shadow: 3px 3px 5px #63CF75 inset;
-    moz-box-shadow: 3px 3px 5px #63CF75 inset;
+/*
+ * Hora libre
+ */
+.libre {
+  text-shadow: 1px 1px 1px #F6F6F6;
+  border-color: #D0D0D0;
+  background-color: #7ff092;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #7ff092), color-stop(1, #63cf75));
+  background-image: -o-linear-gradient(to bottom, #7ff092 0%, #63cf75 100%);
+  background-image: -moz-linear-gradient(to bottom, #7ff092 0%, #63cf75 100%);
+  background-image: -webkit-linear-gradient(top, #7ff092 0%, #63cf75 100%);
+  background-image: -ms-linear-gradient(to bottom, #7ff092 0%, #63cf75 100%);
+  background-image: linear-gradient(to bottom, #7ff092 0%, #63cf75 100%);
 }
-
-.ocupada{
-    text-shadow: 1px 1px 1px #FFFFFF;
-    border-color: #D0D0D0;
-    background-color: #F2F2F2;
-    background-image: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #F2F2F2),
-        color-stop(1, #EEEEEE)
-    );
-    background-image: -o-linear-gradient(bottom, #F2F2F2 0%, #EEEEEE 100%);
-    background-image: -moz-linear-gradient(bottom, #F2F2F2 0%, #EEEEEE 100%);
-    background-image: -webkit-linear-gradient(bottom, #F2F2F2 0%, #EEEEEE 100%);
-    background-image: -ms-linear-gradient(bottom, #F2F2F2 0%, #EEEEEE 100%);
-    background-image: linear-gradient(to bottom, #F2F2F2 0%, #EEEEEE 100%);
+.libre:hover {
+  background-color: #99ffac;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #99ffac), color-stop(1, #63cf75));
+  background-image: -o-linear-gradient(to bottom, #99ffac 0%, #63cf75 100%);
+  background-image: -moz-linear-gradient(to bottom, #99ffac 0%, #63cf75 100%);
+  background-image: -webkit-linear-gradient(top, #99ffac 0%, #63cf75 100%);
+  background-image: -ms-linear-gradient(to bottom, #99ffac 0%, #63cf75 100%);
+  background-image: linear-gradient(to bottom, #99ffac 0%, #63cf75 100%);
 }
-
-.ocupada:hover{
-    background-image: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #EEEEEE),
-        color-stop(1, #F9F9F9)
-    );
-    background-image: -o-linear-gradient(bottom, #EEEEEE 0%, #F9F9F9 100%);
-    background-image: -moz-linear-gradient(bottom, #EEEEEE 0%, #F9F9F9 100%);
-    background-image: -webkit-linear-gradient(bottom, #EEEEEE 0%, #F9F9F9 100%);
-    background-image: -ms-linear-gradient(bottom, #EEEEEE 0%, #F9F9F9 100%);
+.libre:active {
+  background-color: #7ff092;
+  background-image: none;
+  box-shadow: 3px 3px 5px #63CF75 inset;
+  moz-box-shadow: 3px 3px 5px #63CF75 inset;
 }
-
-.ocupada:active{
-    box-shadow: 3px 3px 5px #D0D0D0 inset;
-    moz-box-shadow: 3px 3px 5px #D0D0D0 inset;
-    background-color: #F2F2F2;
-    background-image: none;
+/*
+ * Hora ocupada
+ */
+.ocupada {
+  text-shadow: 1px 1px 1px #FFFFFF;
+  border-color: #D0D0D0;
+  background-color: #f2f2f2;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f2f2f2), color-stop(1, #eeeeee));
+  background-image: -o-linear-gradient(to bottom, #f2f2f2 0%, #eeeeee 100%);
+  background-image: -moz-linear-gradient(to bottom, #f2f2f2 0%, #eeeeee 100%);
+  background-image: -webkit-linear-gradient(top, #f2f2f2 0%, #eeeeee 100%);
+  background-image: -ms-linear-gradient(to bottom, #f2f2f2 0%, #eeeeee 100%);
+  background-image: linear-gradient(to bottom, #f2f2f2 0%, #eeeeee 100%);
 }
-
-.horas{
-    width: 100%;
-    height: 100%;
+.ocupada:hover {
+  background-color: #fafafa;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fafafa), color-stop(1, #eeeeee));
+  background-image: -o-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background-image: -moz-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background-image: -webkit-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+  background-image: -ms-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background-image: linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
 }
-
-.lbl-hora{
-    letter-spacing: 1px;
-    color: #969696;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 10px;
-
+.ocupada:active {
+  box-shadow: 3px 3px 5px #D0D0D0 inset;
+  moz-box-shadow: 3px 3px 5px #D0D0D0 inset;
+  background-color: #F2F2F2;
+  background-image: none;
 }
-
-.lbl-reserva{
-    letter-spacing: 1px;
-    color: #757575;
-    font-size: 35px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.asterisk{
-    font-size: 50px;
-    margin-top: -5px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-

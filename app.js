@@ -5,7 +5,10 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , api = require('./routes/api');
+  , api = require('./routes/api')
+  , lessMiddleware = require('less-middleware')
+  , path = require('path')
+  , pubDir = path.join(__dirname, 'public');
 
 var app = module.exports = express.createServer();
 
@@ -19,7 +22,14 @@ app.configure(function(){
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'your secret here' }));
   app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+  app.use(lessMiddleware({
+      src: pubDir + '/less',
+      dest: pubDir + '/css',
+      prefix: '/css',
+      force: true,
+      debug: true
+  }));
+  app.use(express.static(pubDir));
 });
 
 app.configure('development', function(){

@@ -1,0 +1,72 @@
+@import 'pistas.less';
+
+/*
+ * Hora
+ */
+
+@size: 130px;
+
+.hora{
+    .hora-mixin(@size);
+}
+
+.hora:hover{
+    box-shadow: 4px 4px 4px #D0D0D0;
+    moz-box-shadow: 4px 4px 4px #D0D0D0;
+}
+
+/*
+ * Hora libre
+ */
+
+.libre{
+    text-shadow: 1px 1px 1px #F6F6F6;
+    border-color: #D0D0D0;
+    .gradient(@green, @dark-green);
+}
+
+.libre:hover{
+     .gradient(@light-green, @dark-green);
+}
+
+.libre:active{
+    background-color: @green;
+    background-image: none;
+    box-shadow: 3px 3px 5px #63CF75 inset;
+    moz-box-shadow: 3px 3px 5px #63CF75 inset;
+}
+
+/*
+ * Hora ocupada
+ */
+
+.ocupada{
+    text-shadow: 1px 1px 1px #FFFFFF;
+    border-color: #D0D0D0;
+    .gradient(@grey, @dark-grey);
+}
+
+.ocupada:hover{
+    .gradient(@light-grey, @dark-grey);
+}
+
+.ocupada:active{
+    box-shadow: 3px 3px 5px #D0D0D0 inset;
+    moz-box-shadow: 3px 3px 5px #D0D0D0 inset;
+    background-color: #F2F2F2;
+    background-image: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
