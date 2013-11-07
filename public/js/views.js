@@ -9,9 +9,9 @@ var PistaView = Backbone.View.extend({
         return this;
     },
     renderPistas: function(){
-        var cuadro = this.model.cuadro;
+        var horas = this.model.horas;
         var $el = this.$el;
-        cuadro.forEach(function(hora, index){
+        horas.forEach(function(hora, index){
             var $horaEl = new HoraView({model: hora}).render().$el;
             $($el.children('.horas')[0]).append($horaEl);
         });

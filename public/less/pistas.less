@@ -3,6 +3,8 @@
 @dark-grey: #EEEEEE;
 @hora-text: #969696;
 @reserva-text: #757575;
+@border: #D0D0D0;
+@shadow: #D0D0D0;
 
 @white: #FFFFFF;
 
@@ -33,6 +35,13 @@
     background-image: -webkit-linear-gradient(top, @light 0%, @dark 100%);
     background-image: -ms-linear-gradient(to bottom, @light 0%, @dark 100%);
     background-image: linear-gradient(to bottom, @light 0%, @dark 100%);
+}
+
+.hora-active (@bg-color, @shadow-color) {
+    box-shadow: 3px 3px 5px  @shadow-color inset;
+    moz-box-shadow: 3px 3px 5px  @shadow-color inset;
+    background-color: @bg-color;
+    background-image: none;
 }
 
 .hora-mixin (@size){

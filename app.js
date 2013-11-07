@@ -41,7 +41,7 @@ app.configure('production', function(){
 });
 
 // Routes
-app.get('/api/horas/:id', api.getHoras);
+app.get('/api/pistas/:id/horas/', api.getHoras);
 app.get('/api/pistas', api.getPistas);
 app.get('/', routes.index);
 

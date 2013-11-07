@@ -1,12 +1,12 @@
-var Models = {};
 
 var Pista = Backbone.Model.extend({
     initialize: function(){
+        this.horas = new Horas({id: this.id});
     },
     idAttribute: '_id'
 });
 
-var Pistas = Backbone.Collection.extend({
+var Cuadro = Backbone.Collection.extend({
     model: Pista,
     initialize: function(){
     },
@@ -18,14 +18,9 @@ var Hora = Backbone.Model.extend({
     idAttribute: '_id'
 });
 
-var Cuadro = Backbone.Collection.extend({
+var Horas = Backbone.Collection.extend({
     model: Hora,
-    initialize: function(idPista){
-        this.idPista = idPista;
+    initialize: function(){
     },
-    url: function(){ return '/api/horas/' + this.idPista}
+    url: function(){ return '/api/pistas/' + this.id + '/horas/'}
 });
-
-Models.Pista = Pista;
-Models.Pistas = Pistas;
-Models.Hora = Hora;

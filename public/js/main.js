@@ -1,17 +1,14 @@
 var App = {
-    pistas: pistas,
+    cuadro: cuadro,
     init: function(){
-        App.pistas.models.forEach(function(pista){
-            var cuadro = new Cuadro(pista.id);
+        App.cuadro.models.forEach(function(pista){
             var successCb = function(collection, response, options){
-                pista.set('cuadro', collection.toJSON());
-                pista.cuadro = collection;
                 var $el = new PistaView({model: pista}).render().$el;
                 $('#pistas').append($el);
                 horaEl = $($el.children('.horas')[0]);
                 App.masonry(horaEl);
             };
-            cuadro.fetch({success: successCb});
+            pista.horas.fetch({success: successCb});
         });
     },
     masonry: function($el){

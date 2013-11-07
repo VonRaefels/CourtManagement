@@ -56,8 +56,8 @@
  * Hora libre
  */
 .libre {
-  text-shadow: 1px 1px 1px #F6F6F6;
-  border-color: #D0D0D0;
+  text-shadow: 1px 1px 1px #d0d0d0;
+  border-color: #d0d0d0;
   background-color: #7ff092;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #7ff092), color-stop(1, #63cf75));
   background-image: -o-linear-gradient(to bottom, #7ff092 0%, #63cf75 100%);
@@ -76,17 +76,17 @@
   background-image: linear-gradient(to bottom, #99ffac 0%, #63cf75 100%);
 }
 .libre:active {
+  box-shadow: 3px 3px 5px #63cf75 inset;
+  moz-box-shadow: 3px 3px 5px #63cf75 inset;
   background-color: #7ff092;
   background-image: none;
-  box-shadow: 3px 3px 5px #63CF75 inset;
-  moz-box-shadow: 3px 3px 5px #63CF75 inset;
 }
 /*
  * Hora ocupada
  */
 .ocupada {
-  text-shadow: 1px 1px 1px #FFFFFF;
-  border-color: #D0D0D0;
+  text-shadow: 1px 1px 1px #ffffff;
+  border-color: #d0d0d0;
   background-color: #f2f2f2;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f2f2f2), color-stop(1, #eeeeee));
   background-image: -o-linear-gradient(to bottom, #f2f2f2 0%, #eeeeee 100%);
@@ -105,8 +105,8 @@
   background-image: linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
 }
 .ocupada:active {
-  box-shadow: 3px 3px 5px #D0D0D0 inset;
-  moz-box-shadow: 3px 3px 5px #D0D0D0 inset;
-  background-color: #F2F2F2;
+  box-shadow: 3px 3px 5px #d0d0d0 inset;
+  moz-box-shadow: 3px 3px 5px #d0d0d0 inset;
+  background-color: #f2f2f2;
   background-image: none;
 }

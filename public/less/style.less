@@ -20,8 +20,8 @@
  */
 
 .libre{
-    text-shadow: 1px 1px 1px #F6F6F6;
-    border-color: #D0D0D0;
+    text-shadow: 1px 1px 1px @shadow;
+    border-color: @border;
     .gradient(@green, @dark-green);
 }
 
@@ -30,10 +30,7 @@
 }
 
 .libre:active{
-    background-color: @green;
-    background-image: none;
-    box-shadow: 3px 3px 5px #63CF75 inset;
-    moz-box-shadow: 3px 3px 5px #63CF75 inset;
+    .hora-active(@green, @dark-green)
 }
 
 /*
@@ -41,8 +38,8 @@
  */
 
 .ocupada{
-    text-shadow: 1px 1px 1px #FFFFFF;
-    border-color: #D0D0D0;
+    text-shadow: 1px 1px 1px @white;
+    border-color: @border;
     .gradient(@grey, @dark-grey);
 }
 
@@ -51,10 +48,7 @@
 }
 
 .ocupada:active{
-    box-shadow: 3px 3px 5px #D0D0D0 inset;
-    moz-box-shadow: 3px 3px 5px #D0D0D0 inset;
-    background-color: #F2F2F2;
-    background-image: none;
+    .hora-active(@grey, @shadow)
 }
 
 
