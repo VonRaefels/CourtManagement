@@ -1,22 +1,44 @@
-<div class="page-header">
-    <h1>Reservas <small>Reserva tu pista!</small></h1>
-</div>
-<div class="row">
-    <div id="pistas" class="col-md-12">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reserva de Pistas!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/style.css" rel="stylesheet">
+        <link  href="css/base.css" rel="stylesheet">
 
-    </div>
-</div>
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="../../assets/js/html5shiv.js"></script>
+        <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div  class="container" id="main-content">
+            <div class="page-header">
+                <h1>Reservas <small>Reserva tu pista!</small></h1>
+            </div>
+            <div class="row">
+                <div id="pistas" class="col-md-12">
 
-<%- include templates.ejs %>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="js/lib/underscore.js"></script>
-<script src="js/lib/backbone.js"></script>
-<script src="js/lib/masonry.js"></script>
-<script src="js/lib/handlebars.js"></script>
-<script src="js/views.js"></script>
-<script src="js/models.js"></script>
-<script>
-    cuadro = new Cuadro();
-    cuadro.reset(<%- JSON.stringify(cuadro) %>);
-</script>
-<script src="js/main.js"></script>
+                </div>
+            </div>
+
+            <%- include templates.ejs %>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script src="js/lib/underscore.js"></script>
+            <script src="js/lib/backbone.js"></script>
+            <script src="js/lib/masonry.js"></script>
+            <script src="js/lib/handlebars.js"></script>
+            <script src="js/views.js"></script>
+            <script src="js/models.js"></script>
+            <script>
+                cuadro = new Cuadro();
+                cuadro.reset(<%- JSON.stringify(cuadro) %>);
+            </script>
+            <script src="js/pistas.js"></script>
+        </div>
+    </body>
+</html>
+

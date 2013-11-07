@@ -8,7 +8,7 @@ var express = require('express')
   , api = require('./routes/api')
   , lessMiddleware = require('less-middleware')
   , path = require('path')
-  , pubDir = path.join(__dirname, 'public');
+  , pubDir = path.join(__dirname, 'public')
 
 var app = module.exports = express.createServer();
 
@@ -17,6 +17,9 @@ var app = module.exports = express.createServer();
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
+  app.set('view options', {
+    layout: false
+  });
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
@@ -42,8 +45,9 @@ app.configure('production', function(){
 
 // Routes
 app.get('/api/pistas/:id/horas/', api.getHoras);
-app.get('/api/pistas', api.getPistas);
-app.get('/', routes.index);
+app.get('/api/cuadro', api.getPistas);
+app.get('/', routes.login);
+app.get('/cuadro', routes.cuadro);
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
