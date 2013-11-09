@@ -1,7 +1,8 @@
 GET /api/cuadro/:id -> Cuadro de pistas concreto de una urbanización.
 GET /api/pistas/:id/horas -> El conjunto de horas de una determinada pista.
 POST /api/reserva/:id -> Se envía en el payload el número escogido de pista (Si la pista está cogida se borra), el usuario debe estar autenticado.
- 
+POST /api/login/ -> Realiza el login y crea la sesión.
+
 
 ------------- Esquema de pantallas ----------------
 1. Pantalla de Home, permite al usuario loguearse, darse de alta en el sistema y ofrece una breve descripción del funcionamiento del sistema,
@@ -9,3 +10,9 @@ POST /api/reserva/:id -> Se envía en el payload el número escogido de pista (S
 2. Pantalla de pistas (Tenis o Padel), una página con un sistema grid mediante masonry por cada pista.
 ---------------------------------------------------
 
+
+
+--- TO DO ---
+-> Validar el formulario en cliente.
+-> Envíar petición ajax del login y mostrar información de error en el cliente.
+-> MongoDb, tabla de urbanizaciones y usuarios.

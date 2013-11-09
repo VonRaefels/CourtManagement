@@ -1,7 +1,3 @@
-$('#urbas').typeahead({
-  name: 'urbas',
-  local: urbas
+$(document).ready(function() {
+    $('#urbas').select2();
 });
-
-$('.typeahead.input-sm').siblings('input.tt-hint').addClass('hint-small');
-$('.typeahead.input-lg').siblings('input.tt-hint').addClass('hint-large');

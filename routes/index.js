@@ -9,6 +9,6 @@ exports.cuadro = function(req, res){
 };
 
 exports.login = function(req, res){
-    var urbas = [{value: 'Las Matas', tokens: ['Matas', 'Rozas', 'Las'], name: 'Las Matas'}]
+    var urbas = [{value: '1', name: 'Las Matas'}, {value: '2', name: 'Las Rozas'}, {value: '3', name: 'Alcobendas'}];
     res.render('login', {urbas: urbas});
 }
