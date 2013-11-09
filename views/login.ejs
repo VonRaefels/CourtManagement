@@ -27,7 +27,7 @@
                     <label class="col-md-4 control-label lbl-input" for="urb">Urbanización: </label>
                     <div class="col-md-8">
                         <div class="input-group">
-                            <span class="input-group-addon glyphicon glyphicon-home"></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
                             <select id="urbas" class="">
                             <% urbas.forEach(function(urba, index) { %>
                                 <option value="<%= urba.value %>"><%= urba.name %></option>
@@ -40,8 +40,8 @@
                     <label class="col-md-4 control-label lbl-input" for="username">Usuario: </label>
                     <div class="col-md-8">
                         <div class="input-group">
-                            <span class="input-group-addon glyphicon glyphicon-user"></span>
-                            <input id="username" name="username" class="form-control input-lg" >
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input id="username" name="username" class="form-control input-lg" value="test" >
                         </div>
 
                     </div>
@@ -50,8 +50,8 @@
                     <label class="col-md-4 control-label lbl-input" for="password">Contraseña: </label>
                     <div class="col-md-8">
                         <div class="input-group">
-                            <span class="input-group-addon glyphicon">*</span>
-                            <input id="password" name="password" class="form-control input-lg" type="password" placeholder="">
+                            <span class="input-group-addon"><span class="glyphicon">*</span></span>
+                            <input id="password" name="password" class="form-control input-lg" type="password" value="test123">
                         </div>
                     </div>
                 </div>
@@ -59,6 +59,31 @@
                     <button type="button" class="col-md-offset-1 btn btn-primary" id="login-btn">LogIn</button>
                 </div>
             </form>
+
+            <!-- Modal Error Data -->
+            <div class="modal fade" id="data-error" tabindex="-1" role="dialog" aria-labelledby="data-error" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="alert alert-warning">
+                    <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+                    <h4><strong>Error en los datos de login  </strong><span class="glyphicon glyphicon-info-sign"></span></h4>
+                    <p>Los datos de login proporcionados nos son validos, porfavor <strong>reviselos</strong> y <strong>
+                    <a href="#" data-dismiss="modal">vuelva a intentarlo.</a></strong></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Error Ajax -->
+            <div class="modal fade" id="server-error" tabindex="-1" role="dialog" aria-labelledby="server-error" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="alert alert-danger">
+                    <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+                    <h4><strong>Error del servidor  </strong><span class="glyphicon glyphicon-warning-sign"></span></h4>
+                    <p>Ha ocurrido un problema con su petición, es posible que en estos momentos el servidor <strong>no este
+                        disponible</strong>, porfavor <strong><a href="#" data-dismiss="modal">intentelo más tarde.</a></strong></p>
+                </div>
+              </div>
+            </div>
+
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
             <script src="js/lib/bootstrap.min.js"></script>
             <script src="js/lib/select2.min.js"></script>
@@ -67,4 +92,5 @@
         </div>
     </body>
 </html>
+
 

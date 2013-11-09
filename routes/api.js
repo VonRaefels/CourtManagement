@@ -1,3 +1,5 @@
+var passport = require('passport');
+
 
 exports.getHoras = function(req, res) {
     var id = req.param('id');
@@ -13,7 +15,18 @@ exports.getPistas = function(req, res) {
     res.json(data);
 }
 
-exports.login = function(req, res) {
-    var data = {error: true};
-    res.json(data);
+exports.login = function(req, res, next) {
+    passport.authenticate('pistas', function(err, user, info) {
+        if(err == null) {
+            req.login(user, function(err) {
+                res.json({error: !!err});
+            });
+        }else {
+            res.json({error: !!err});
+        }
+    })(req, res, next);
+}
+
+exports.unathorized = function(req, res) {
+    res.json({error: '401 Unathorized'});
 }

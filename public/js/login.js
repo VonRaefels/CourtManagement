@@ -7,15 +7,22 @@ $(document).ready(function() {
             var urba = $('#urbas').val();
             var data = {username: username, password: password, urba: urba};
             $.ajax({
-                type: "POST",
-                url: "/login",
-                contentType: "application/json; charset=utf-8",
+                type: 'POST',
+                url: '/login',
+                contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(data)
             })
-            .done(function(msg) {
-                console.log(msg);
+            .done(function(res) {
+                modalOpt = {keyboard: true, show: true};
+                if(res.error) {
+                    $('#data-error').modal(modalOpt);
+                }else {
+                    document.location.href = '/cuadro';
+                }
             })
             .fail(function() {
+                modalOpt = {keyboard: true, show: true};
+                $('#server-error').modal(modalOpt);
             });
         }
     }

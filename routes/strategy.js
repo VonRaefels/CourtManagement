@@ -1,25 +1,26 @@
+"use strict";
+
 var passport = require('passport')
 , util = require('util');
 
-function PistasStrategy(options, verify) {
+function Strategy(verify) {
     this.name = 'pistas';
-    this.urba
-    this.id = options.id;
-    this.password = options.password;
-    this.urba = options.urba;
     this.verify = verify;
+    passport.Strategy.call(this);
+
 }
 
-util.inherits(PistasStrategy, passport.Strategy);
+util.inherits(Strategy, passport.Strategy);
 
-StrategyMock.prototype.authenticate = function authenticate(req) {
+Strategy.prototype.authenticate = function(req, options) {
     var user = {
-        id: this.id,
-        password: this.password,
-        urba: this.urba
+        username: req.body.username,
+        password: req.body.password,
+        urba: req.body.urba
     }
     , _this = this;
-    this.verify(user, function(err, resident) {
+
+    this.verify(user, function(err, resident, info) {
         if(err) {
             _this.fail(err);
         } else {
@@ -28,4 +29,4 @@ StrategyMock.prototype.authenticate = function authenticate(req) {
     });
 }
 
-module.exports = PistasStrategy;
+module.exports = Strategy;
