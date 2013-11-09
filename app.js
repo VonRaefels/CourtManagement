@@ -46,8 +46,9 @@ app.configure('production', function(){
 // Routes
 app.get('/api/pistas/:id/horas/', api.getHoras);
 app.get('/api/cuadro', api.getPistas);
-app.post('/api/login', api.logIn);
-app.get('/', routes.login);
+app.post('/login', api.login);
+app.get('/', function(req, res) { res.redirect('/login')});
+app.get('/login', routes.login);
 app.get('/cuadro', routes.cuadro);
 
 

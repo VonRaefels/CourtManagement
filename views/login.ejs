@@ -22,30 +22,42 @@
                 <h1>Tus Pistas <small>login</small></h1>
             </div>
             <p class="lead">Reserva tus pistas, haz login!</p>
-            <form class="form-horizontal col-md-5" action="/api/login" method="POST">
+            <form id="login-form" class="form-horizontal col-md-5">
                 <div class="form-group">
                     <label class="col-md-4 control-label lbl-input" for="urb">Urbanización: </label>
                     <div class="col-md-8">
-                        <select id="urbas" class="">
-                        <% urbas.forEach(function(urba, index) { %>
-                            <option value="<%= urba.value %>"><%= urba.name %></option>
-                        <% }); %>
-                        </select>
+                        <div class="input-group">
+                            <span class="input-group-addon glyphicon glyphicon-home"></span>
+                            <select id="urbas" class="">
+                            <% urbas.forEach(function(urba, index) { %>
+                                <option value="<%= urba.value %>"><%= urba.name %></option>
+                            <% }); %>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label lbl-input" for="number">Número: </label>
+                    <label class="col-md-4 control-label lbl-input" for="username">Usuario: </label>
                     <div class="col-md-8">
-                        <input id="number" name="number" class="form-control input-lg" type="number" placeholder="">
+                        <div class="input-group">
+                            <span class="input-group-addon glyphicon glyphicon-user"></span>
+                            <input id="username" name="username" class="form-control input-lg" >
+                        </div>
+
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label lbl-input" for="password">Contraseña: </label>
                     <div class="col-md-8">
-                        <input id="password" name="password" class="form-control input-lg" type="password" placeholder="">
+                        <div class="input-group">
+                            <span class="input-group-addon glyphicon">*</span>
+                            <input id="password" name="password" class="form-control input-lg" type="password" placeholder="">
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="col-md-offset-1 btn btn-primary" id="login-btn">LogIn</button>
+                <div class="form-group">
+                    <button type="button" class="col-md-offset-1 btn btn-primary" id="login-btn">LogIn</button>
+                </div>
             </form>
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
             <script src="js/lib/bootstrap.min.js"></script>
