@@ -38,7 +38,21 @@ var findPistasAndCuadros = function(idUrba, idCuadro, cb) {
     });
 }
 
+var findUserAndUrba = function(idUser, cb) {
+    models.User.findById(idUser, function(err, user) {
+        if(err) {
+            cb(true, null, null);
+        }else {
+            models.Urbanizacion.findById(user._idUrba, function(err, urba) {
+                cb(err, user, urba);
+            });
+        }
+    });
+}
+
+
 exports.findUrbas = findUrbas;
 exports.findCuadros = findCuadros;
 exports.findPistas = findPistas;
 exports.findPistasAndCuadros = findPistasAndCuadros;
+exports.findUserAndUrba = findUserAndUrba;

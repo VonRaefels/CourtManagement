@@ -12,7 +12,8 @@ var express = require('express')
   , passport = require('passport')
   , PistasStrategy = require('./routes/strategy')
   , mongoose = require('mongoose')
-  , models = require('./models/schemas');
+  , models = require('./models/schemas')
+  , helpers = require('./models/helpers');
 
 var app = module.exports = express.createServer();
 
@@ -33,10 +34,11 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  models.User.findById(id, function(err, user) {
+  helpers.findUserAndUrba(id, function(err, user, urba) {
     if(err) {
       done(true, null);
     }else {
+      user.urba = urba;
       done(null, user);
     }
   });
