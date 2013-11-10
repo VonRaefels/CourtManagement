@@ -11,7 +11,7 @@ var Cuadro = Backbone.Collection.extend({
     model: Pista,
     initialize: function(){
     },
-    url: '/api/cuadro/'
+    url: function() {'/api/cuadros/' + this.id}
 });
 
 var Hora = Backbone.Model.extend({

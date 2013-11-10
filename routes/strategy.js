@@ -14,9 +14,9 @@ util.inherits(Strategy, passport.Strategy);
 
 Strategy.prototype.authenticate = function(req, options) {
     var user = {
-        username: req.body.username,
+        name: req.body.name,
         password: req.body.password,
-        urba: req.body.urba
+        _idUrba: req.body._idUrba
     }
     , _this = this;
 

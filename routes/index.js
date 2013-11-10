@@ -1,14 +1,50 @@
+var helpers = require('../models/helpers');
 
-/*
- * GET home page.
- */
+exports.cuadro = function(req, res) {
+    var idCuadro = req.params.id;
+    var idUrba = req.user._idUrba;
+    helpers.findPistasAndCuadros(idUrba, idCuadro, function(err, cuadros, pistas) {
+        if(err) {
+            res.send(500, {error: 'Could not retrieve pistas or cuadros'});
+        }else {
+            findCuadroInArray(cuadros, idCuadro, function(cuadro) {
+                res.render('cuadro', {cuadros: cuadros, active: cuadro, pistas: pistas});
+            });
+        }
+    });
+}
 
-exports.cuadro = function(req, res){
-    var cuadro = [{_id: 1, nombre: "Pista A"}, {_id: 2, nombre: "Pista B"}, {_id: 3, nombre: "Pista C"}];
-    res.render('index', {cuadro:  cuadro});
-};
+exports.index = function(req, res) {
+    var idUrba = req.user._idUrba;
+    helpers.findCuadros(idUrba, function(err, cuadros) {
+        if(err) {
+            res.send(500, {error: 'Could not retrieve cuadros'});
+        }else {
+            res.render('index', {cuadros: cuadros, active: ''});
+        }
+    });
+}
 
-exports.login = function(req, res){
-    var urbas = [{value: '1', name: 'Las Matas'}, {value: '2', name: 'Las Rozas'}, {value: '3', name: 'Alcobendas'}];
-    res.render('login', {urbas: urbas});
+function findCuadroInArray(cuadros, idCuadro, cb) {
+    cuadros.forEach(function(cuadro, index) {
+        if(cuadro._id == idCuadro) {
+            cb(cuadro);
+            return;
+        }
+    });
+}
+
+exports.login = function(req, res) {
+    helpers.findUrbas(function(err, urbas) {
+        if(err) {
+            res.send(500, {error: 'Could not retrieve urbas'});
+        }else {
+            res.render('login', {urbas: urbas});
+        }
+    });
+}
+
+exports.logout = function(req, res) {
+    req.logout();
+    res.redirect('/login');
 }

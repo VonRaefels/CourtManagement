@@ -4,8 +4,8 @@ $(document).ready(function() {
         if(validateForm()) {
             var username = $('#username').val();
             var password = $('#password').val();
-            var urba = $('#urbas').val();
-            var data = {username: username, password: password, urba: urba};
+            var urba = $('#urbas').select2("val");
+            var data = {name: username, password: password, _idUrba: urba};
             $.ajax({
                 type: 'POST',
                 url: '/login',
@@ -17,7 +17,7 @@ $(document).ready(function() {
                 if(res.error) {
                     $('#data-error').modal(modalOpt);
                 }else {
-                    document.location.href = '/cuadro';
+                    document.location.href = '/';
                 }
             })
             .fail(function() {
@@ -30,6 +30,7 @@ $(document).ready(function() {
     var validateForm = function() {
         var $username = $('#username');
         var $password = $('#password');
+        var $urba = $('#urbas');
 
         if(!isValidText($username.val())) {
             showError($username);
@@ -45,11 +46,18 @@ $(document).ready(function() {
             removeError($password);
         }
 
+        if(!isValidText($urba.select2("val"))) {
+            showError($urba);
+            return false;
+        }else {
+            removeError($urba);
+        }
+
         return true;
     }
 
     function isValidText(text) {
-        return text != '' && text.length < 20;
+        return text != '' && text.length < 40;
     }
 
     function showError($el) {

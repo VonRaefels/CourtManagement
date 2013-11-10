@@ -1,4 +1,5 @@
 var passport = require('passport');
+    helpers = require('../models/helpers');
 
 
 exports.getHoras = function(req, res) {
@@ -10,9 +11,21 @@ exports.getHoras = function(req, res) {
     res.json(data);
 };
 
-exports.getPistas = function(req, res) {
+exports.getCuadro = function(req, res) {
+    var idCuadro = req.param('id');
     var data = [{_id: 1, nombre: "Pista A"}, {_id: 2, nombre: "Pista B"}, {_id: 3, nombre: "Pista C"}];
     res.json(data);
+}
+
+exports.getCuadros = function(req, res) {
+    var idUrba = req.param('id');
+    helpers.getCuadros(idUrba, function(err, cuadros) {
+        if(err) {
+            res.send(500, {error: 'Could not retrieve cuadros'});
+        }else {
+            res.json(cuadros);
+        }
+    });
 }
 
 exports.login = function(req, res, next) {

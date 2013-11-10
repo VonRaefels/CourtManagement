@@ -10,25 +10,36 @@ var express = require('express')
   , path = require('path')
   , pubDir = path.join(__dirname, 'public')
   , passport = require('passport')
-  , PistasStrategy = require('./routes/strategy');
+  , PistasStrategy = require('./routes/strategy')
+  , mongoose = require('mongoose')
+  , models = require('./models/schemas');
 
 var app = module.exports = express.createServer();
 
 
 passport.use(new PistasStrategy(function(user, done) {
-    if(user.username == 'test') {
-        done(null, user);
-    }else {
-      done(true, null);
-    }
+  var data = {name: user.name, password: user.password, _idUrba: user._idUrba};
+  models.User.findOne(data, function(err, _user) {
+      if(err || !_user) {
+        done(true, null);
+      } else {
+        done(null, _user);
+      }
+    });
 }));
 
 passport.serializeUser(function(user, done) {
-  done(null, user.username);
+  done(null, user._id);
 });
 
 passport.deserializeUser(function(id, done) {
-  done(null, {username: 'test', password: 'test123', urba: '1'});
+  models.User.findById(id, function(err, user) {
+    if(err) {
+      done(true, null);
+    }else {
+      done(null, user);
+    }
+  });
 });
 
 // Configuration
@@ -66,19 +77,31 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
+var auth = function auth(options) {
+  return function _auth(req, res, next){
+    if(req.user) {
+      next();
+    }else {
+      res.redirect(options.failureRedirect);
+    }
+  }
+}
 
 
 // Routes
-app.get('/api/pistas/:id/horas/', passport.authorize('pistas', {failureRedirect: '/api/unathorized'}), api.getHoras);
-app.get('/api/cuadro', passport.authorize('pistas', {failureRedirect: '/api/unathorized'}), api.getPistas);
+app.get('/api/pistas/:id/horas', auth({failureRedirect: '/api/unathorized'}), api.getHoras);
+app.get('/api/cuadros/:id', auth({failureRedirect: '/api/unathorized'}), api.getCuadro);
 app.get('/api/unathorized', api.unathorized);
 
 app.post('/login', api.login);
-app.get('/', function(req, res) { res.redirect('/login')});
+app.get('/', auth({failureRedirect: '/login'}), routes.index);
 app.get('/login', routes.login);
-app.get('/cuadro', passport.authorize('pistas', {failureRedirect: '/login'}), routes.cuadro);
+app.get('/logout', routes.logout);
+app.get('/cuadros/:id', auth({failureRedirect: '/login'}), routes.cuadro);
 
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
+
+

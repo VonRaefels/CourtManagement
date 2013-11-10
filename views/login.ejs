@@ -4,11 +4,11 @@
         <title>Reserva de Pistas!</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="css/login.css" rel="stylesheet">
-        <link href="css/select2-bootstrap.css" rel="stylesheet">
-        <link href="css/select2.css" rel="stylesheet">
-        <link  href="css/base.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="/css/login.css" rel="stylesheet">
+        <link href="/css/select2-bootstrap.css" rel="stylesheet">
+        <link href="/css/select2.css" rel="stylesheet">
+        <link  href="/css/base.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
                             <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
                             <select id="urbas" class="">
                             <% urbas.forEach(function(urba, index) { %>
-                                <option value="<%= urba.value %>"><%= urba.name %></option>
+                                <option value="<%= urba._id %>"><%= urba.name %></option>
                             <% }); %>
                             </select>
                         </div>
@@ -41,7 +41,7 @@
                     <div class="col-md-8">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                            <input id="username" name="username" class="form-control input-lg" value="test" >
+                            <input id="username" name="username" class="form-control input-lg"  value="74">
                         </div>
 
                     </div>
@@ -51,12 +51,14 @@
                     <div class="col-md-8">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon">*</span></span>
-                            <input id="password" name="password" class="form-control input-lg" type="password" value="test123">
+                            <input id="password" name="password" class="form-control input-lg" type="password" value="12345">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="col-md-offset-1 btn btn-primary" id="login-btn">LogIn</button>
+                    <button type="submit" class="col-md-offset-1 btn btn-primary" id="login-btn">
+                    <span class="glyphicon glyphicon-log-in"></span>&nbsp&nbsp&nbspIdentificate
+                    </button>
                 </div>
             </form>
 
@@ -85,10 +87,10 @@
             </div>
 
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-            <script src="js/lib/bootstrap.min.js"></script>
-            <script src="js/lib/select2.min.js"></script>
-            <script src="js/lib/select2_locale_es.js"></script>
-            <script src="js/login.js"></script>
+            <script src="/js/lib/bootstrap.min.js"></script>
+            <script src="/js/lib/select2.min.js"></script>
+            <script src="/js/lib/select2_locale_es.js"></script>
+            <script src="/js/login.js"></script>
         </div>
     </body>
 </html>

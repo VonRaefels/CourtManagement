@@ -1,0 +1,1 @@
+exports.dbLocation = DB_LOCATION = 'mongodb://localhost/CourtManagement';
