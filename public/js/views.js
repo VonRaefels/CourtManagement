@@ -8,12 +8,27 @@ var PistaView = Backbone.View.extend({
         this.renderPistas();
         return this;
     },
+    events: {
+        'shown.bs.tab   a[data-toggle="tab"]'   : "layout"
+    },
+    layout: function(e) {
+        e.preventDefault();
+        var target = $(e.target).attr('href');
+        var masonry = $(target).find('.horas').data('masonry');
+        masonry.layout();
+    },
     renderPistas: function(){
         var horas = this.model.horas;
         var $el = this.$el;
         horas.forEach(function(hora, index){
             var $horaEl = new HoraView({model: hora}).render().$el;
-            $($el.children('.horas')[0]).append($horaEl);
+            var $hoy = $el.find('.hoy');
+            var $mañana = $el.find('.mañana');
+            if(hora.get('dia') == 'hoy') {
+                $hoy.append($horaEl);
+            }else {
+                $mañana.append($horaEl);
+            }
         });
     }
 });

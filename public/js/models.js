@@ -24,6 +24,5 @@ var Horas = Backbone.Collection.extend({
     initialize: function(){
     },
     url: function(){
-        console.log(this);
         return '/api/pistas/' + this.id + '/horas/'}
 });

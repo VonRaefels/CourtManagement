@@ -6,11 +6,15 @@
 
 @size: 130px;
 
-.hora{
+.hora {
     .hora-mixin(@size);
 }
 
-.hora:hover{
+.horas {
+    margin-top: 10px;
+}
+
+.hora:hover {
     box-shadow: 4px 4px 4px #D0D0D0;
     moz-box-shadow: 4px 4px 4px #D0D0D0;
 }
@@ -19,17 +23,17 @@
  * Hora libre
  */
 
-.libre{
+.libre {
     text-shadow: 1px 1px 1px @shadow;
     border-color: @border;
     .gradient(@green, @dark-green);
 }
 
-.libre:hover{
+.libre:hover {
      .gradient(@light-green, @dark-green);
 }
 
-.libre:active{
+.libre:active {
     .hora-active(@green, @dark-green)
 }
 
@@ -37,17 +41,17 @@
  * Hora ocupada
  */
 
-.ocupada{
+.ocupada {
     text-shadow: 1px 1px 1px @white;
     border-color: @border;
     .gradient(@grey, @dark-grey);
 }
 
-.ocupada:hover{
+.ocupada:hover {
     .gradient(@light-grey, @dark-grey);
 }
 
-.ocupada:active{
+.ocupada:active {
     .hora-active(@grey, @shadow)
 }
 

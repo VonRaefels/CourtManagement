@@ -48,6 +48,9 @@
 .hora .asterisk {
   font-size: 43.333333333333336px;
 }
+.horas {
+  margin-top: 10px;
+}
 .hora:hover {
   box-shadow: 4px 4px 4px #D0D0D0;
   moz-box-shadow: 4px 4px 4px #D0D0D0;

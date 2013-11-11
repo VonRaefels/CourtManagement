@@ -5,8 +5,10 @@ var App = {
             var successCb = function(collection, response, options){
                 var $el = new PistaView({model: pista}).render().$el;
                 $('#pistas').append($el);
-                horaEl = $($el.children('.horas')[0]);
-                App.masonry(horaEl);
+                $hoy = $($el.find('.hoy'));
+                $mañana = $($el.find('.mañana'));
+                App.masonry($hoy);
+                App.masonry($mañana);
             };
             pista.horas.fetch({success: successCb});
             App.events();

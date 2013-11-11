@@ -1,6 +1,19 @@
 <script type="text/x-handlebars-template" id="pista-template">
         <h2>{{name}}</h2>
-        <div class="horas"></div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#{{_id}}hoy" data-toggle="tab">Hoy</a></li>
+            <li><a href="#{{_id}}mañana" data-toggle="tab">Mañana</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="{{_id}}hoy">
+                <div class="hoy horas">
+                </div>
+            </div>
+            <div class="tab-pane fade" id="{{_id}}mañana">
+                <div class="mañana horas">
+                </div>
+            </div>
+        </div>
         <hr/>
         <div class="clear"></div>
 </script>
