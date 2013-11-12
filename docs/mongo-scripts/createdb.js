@@ -10,5 +10,5 @@ db.createCollection("Urbanizacion");
 db.createCollection("User");
 db.createCollection("Cuadro");
 db.createCollection("Pista");
-
+db.createCollection("Hora");
 

@@ -6,9 +6,9 @@ var App = {
                 var $el = new PistaView({model: pista}).render().$el;
                 $('#pistas').append($el);
                 $hoy = $($el.find('.hoy'));
-                $mañana = $($el.find('.mañana'));
+                $manana = $($el.find('.manana'));
                 App.masonry($hoy);
-                App.masonry($mañana);
+                App.masonry($manana);
             };
             pista.horas.fetch({success: successCb});
             App.events();

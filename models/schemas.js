@@ -34,7 +34,9 @@ var User = new Schema(
 var Cuadro = new Schema(
     {
         name        : {type: String, required: true},
-        _idUrba     : {type: ObjectId, required: true, ref: 'Urbanizacion'}
+        _idUrba     : {type: ObjectId, required: true, ref: 'Urbanizacion'},
+        start       : {type: String, required: true},
+        lastDate     : {type: String}
     },
     {
         collection  : 'Cuadro'
@@ -51,8 +53,20 @@ var Pista = new Schema(
     }
 );
 
+var Hora = new Schema(
+    {
+        hora        : {type: String, required: true},
+        _idPista    : {type: ObjectId, required: true, ref: 'Pista'},
+        reserva     : {type: String, requried: false},
+        dia         : {type: String, required: true}
+    },
+    {
+        collection  : 'Hora'
+    }
+)
 
 module.exports.Urbanizacion = mongoose.model('Urbanizacion', Urbanizacion);
 module.exports.User = mongoose.model('User', User);
 module.exports.Cuadro = mongoose.model('Cuadro', Cuadro);
 module.exports.Pista = mongoose.model('Pista', Pista);
+module.exports.Hora = mongoose.model('Hora', Hora);

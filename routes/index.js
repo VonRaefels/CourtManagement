@@ -6,12 +6,11 @@ exports.cuadro = function(req, res) {
     var user = req.user;
     helpers.findPistasAndCuadros(idUrba, idCuadro, function(err, cuadros, pistas) {
         if(err) {
-            res.send(500, {error: 'Could not retrieve pistas or cuadros'});
-        }else {
-            findCuadroInArray(cuadros, idCuadro, function(cuadro) {
-                res.render('cuadro', {cuadros: cuadros, active: cuadro, pistas: pistas, user: user});
-            });
+            return res.send(500, {error: 'Could not retrieve pistas or cuadros'});
         }
+        findCuadroInArray(cuadros, idCuadro, function(cuadro) {
+            res.render('cuadro', {cuadros: cuadros, active: cuadro, pistas: pistas, user: user});
+        });
     });
 }
 
@@ -20,18 +19,16 @@ exports.index = function(req, res) {
     var user = req.user;
     helpers.findCuadros(idUrba, function(err, cuadros) {
         if(err) {
-            res.send(500, {error: 'Could not retrieve cuadros'});
-        }else {
-            res.render('index', {cuadros: cuadros, active: '', user: user});
+            return res.send(500, {error: 'Could not retrieve cuadros'});
         }
+        res.render('index', {cuadros: cuadros, active: '', user: user});
     });
 }
 
 function findCuadroInArray(cuadros, idCuadro, cb) {
     cuadros.forEach(function(cuadro, index) {
         if(cuadro._id == idCuadro) {
-            cb(cuadro);
-            return;
+            return cb(cuadro);
         }
     });
 }
@@ -39,10 +36,9 @@ function findCuadroInArray(cuadros, idCuadro, cb) {
 exports.login = function(req, res) {
     helpers.findUrbas(function(err, urbas) {
         if(err) {
-            res.send(500, {error: 'Could not retrieve urbas'});
-        }else {
-            res.render('login', {urbas: urbas});
+            return res.send(500, {error: 'Could not retrieve urbas'});
         }
+        res.render('login', {urbas: urbas});
     });
 }
 

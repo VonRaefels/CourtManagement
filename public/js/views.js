@@ -23,11 +23,11 @@ var PistaView = Backbone.View.extend({
         horas.forEach(function(hora, index){
             var $horaEl = new HoraView({model: hora}).render().$el;
             var $hoy = $el.find('.hoy');
-            var $mañana = $el.find('.mañana');
+            var $manana = $el.find('.manana');
             if(hora.get('dia') == 'hoy') {
                 $hoy.append($horaEl);
             }else {
-                $mañana.append($horaEl);
+                $manana.append($horaEl);
             }
         });
     }
