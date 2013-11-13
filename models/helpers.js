@@ -55,6 +55,7 @@ var areThereHours = function(idPista, cb) {
     });
 }
 
+// TO DO  Unchecked
 var isNewDay = function isNewDay(idPista, cb) {
     var findPista = function findPista(callback) {
         models.Pista.findById(idPista, function(err, pista) {
@@ -87,7 +88,6 @@ var isNewDay = function isNewDay(idPista, cb) {
     async.waterfall([findPista, checkDate], done);
 }
 
-// TO DO Unchecked!
 var createHoras = function createHoras(idPista, dia, cb) {
     var findPista = function findPista(callback) {
         models.Pista.findById(idPista, function(err, pista) {
@@ -103,19 +103,23 @@ var createHoras = function createHoras(idPista, dia, cb) {
         var startHour = cuadro.startHour;
         var limit = cuadro.limit;
         var duration = cuadro.duration;
-        var fn = [];
+        var fnArr = [];
 
-        for(var i = 0, l = limit; i < l; i++) {
-            var horaBefore = {hora: startHour + duration * limit, _idPista: idPista, dia: dia};
-            var createHora = function createHora(callback) {
-                models.Hora.create(horaBefore, function(err, hora) {
-                    callback(err, hora);
-                });
-            }
-            fn.push(createHora);
+        for(var i = 1, l = limit; i <= l; i++) {
+            var newDate = new Date(startHour.getTime() + duration * i * 60000);
+            var horaString = String('00' + newDate.getHours()).slice(-2) + ':'
+                            + String('00' + newDate.getMinutes()).slice(-2);
+            (function(horaString) {
+                var createHora = function createHora(callback) {
+                    models.Hora.create({hora: horaString, dia: dia, _idPista: idPista}, function(err, hora) {
+                        callback(err, hora);
+                    });
+                }
+                fnArr.push(createHora);
+            })(horaString);
         }
-        async.parallel(fn, function(err, results) {
-            cb(err, results);
+        async.parallel(fnArr, function(err, horas) {
+            cb(err, horas);
         });
     };
     async.waterfall([findPista, findCuadro], done);
@@ -154,3 +158,4 @@ exports.findCuadros = findCuadros;
 exports.findPistas = findPistas;
 exports.findPistasAndCuadros = findPistasAndCuadros;
 exports.findUserAndUrba = findUserAndUrba;
+exports.createHoras = createHorasDia;

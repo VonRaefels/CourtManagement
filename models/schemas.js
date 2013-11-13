@@ -35,8 +35,10 @@ var Cuadro = new Schema(
     {
         name        : {type: String, required: true},
         _idUrba     : {type: ObjectId, required: true, ref: 'Urbanizacion'},
-        start       : {type: String, required: true},
-        lastDate     : {type: String}
+        startHour   : {type: Date, required: true},
+        lastDate    : {type: Date},
+        duration    : {type: Number, required: true},
+        limit       : {type: Number}
     },
     {
         collection  : 'Cuadro'

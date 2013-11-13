@@ -23,6 +23,11 @@ var Horas = Backbone.Collection.extend({
     model: Hora,
     initialize: function(){
     },
+    parse: function(response, options) {
+        var hoy = response.hoy;
+        var manana = response.manana;
+        return hoy.concat(manana);
+    },
     url: function(){
         return '/api/pistas/' + this.id + '/horas/'}
 });

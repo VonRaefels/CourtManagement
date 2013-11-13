@@ -5,7 +5,7 @@ var PistaView = Backbone.View.extend({
     template: Handlebars.compile($('#pista-template').html()),
     render: function(){
         this.$el.append(this.template(this.model.toJSON()));
-        this.renderPistas();
+        this.renderHoras();
         return this;
     },
     events: {
@@ -17,7 +17,7 @@ var PistaView = Backbone.View.extend({
         var masonry = $(target).find('.horas').data('masonry');
         masonry.layout();
     },
-    renderPistas: function(){
+    renderHoras: function(){
         var horas = this.model.horas;
         var $el = this.$el;
         horas.forEach(function(hora, index){
