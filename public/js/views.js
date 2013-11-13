@@ -1,5 +1,5 @@
 var PistaView = Backbone.View.extend({
-    id: function(){ return 'pista-' + this.model.id; },
+    id: function(){ return this.model.id; },
     tagName: 'div',
     className: 'pista',
     template: Handlebars.compile($('#pista-template').html()),
@@ -34,7 +34,7 @@ var PistaView = Backbone.View.extend({
 });
 
 var HoraView = Backbone.View.extend({
-    id: function(){ return 'hora-' + this.model.id; },
+    id: function(){ return this.model.id; },
     tagName: 'div',
     className: function(){
         var className = 'hora';

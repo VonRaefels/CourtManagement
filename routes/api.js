@@ -49,3 +49,10 @@ exports.login = function(req, res, next) {
 exports.unathorized = function(req, res) {
     res.json({error: '401 Unathorized'});
 }
+
+exports.isNewDay = function(req, res) {
+    var idPista = req.param('id');
+    helpers.isNewDay(idPista, function(err, isNewDay) {
+        res.json({err: err, isNewDay: isNewDay});
+    });
+}

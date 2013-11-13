@@ -49,43 +49,41 @@ var findUserAndUrba = function(idUser, cb) {
     });
 }
 
-var areThereHours = function(idPista, cb) {
-    models.Hora.count({_idPista: idPista}, function(err, count) {
-        return cb(err, count);
+var findPistaById = function findPistaById(idPista, callback) {
+    models.Pista.findById(idPista, function(err, pista) {
+        callback(err, pista);
     });
 }
 
-// TO DO  Unchecked
+var areThereHours = function(idPista, cb) {
+    models.Hora.count({_idPista: idPista}, function(err, count) {
+        return cb(err, count > 0);
+    });
+}
+
 var isNewDay = function isNewDay(idPista, cb) {
     var findPista = function findPista(callback) {
-        models.Pista.findById(idPista, function(err, pista) {
+        findPistaById(idPista, function(err, pista) {
             callback(err, pista._idCuadro);
         });
     };
-    var checkDate = function checkDate(idCuadro, callback) {
+    var checkDate = function checkDate(err, idCuadro) {
+        if(err) return cb(true, null);
         models.Cuadro.findById(idCuadro, function(err, cuadro) {
             var today = new Date();
             if(cuadro.lastDate === undefined)
-                return callback(true, null);
-            var lastDate = new Date(cuadro.lastDate);
+                return cb(true, null);
+            var lastDate = cuadro.lastDate;
+            var startHour = cuadro.startHour;
 
-            var hourArray = cuadro.start.split(':');
-            var hour = hourArray[0];
-            var minutes = hourArray[1];
-            var seconds = hourArray[2];
+            lastDate.setDate(lastDate.getDate() + 1);
+            lastDate.setHours(startHour.getHours());
+            lastDate.setMinutes(startHour.getMinutes());
 
-            lastDate.setUTCDate(lastDate.getUTCDate() + 1);
-            lastDate.setUTCHours(hour);
-            lastDate.setUTCMinutes(minutes);
-            lastDate.setUTCSeconds(seconds);
-
-            callback(null, today > lastDate);
+            cb(null, today > lastDate);
         });
     };
-    var done = function done(err, isNewDay) {
-        cb(err, isNewDay);
-    };
-    async.waterfall([findPista, checkDate], done);
+    async.waterfall([findPista], checkDate);
 }
 
 var createHoras = function createHoras(idPista, dia, cb) {
@@ -99,7 +97,7 @@ var createHoras = function createHoras(idPista, dia, cb) {
             callback(err, cuadro);
         });
     };
-    var done = function done(err, cuadro) {
+    var doCreateHoras = function doCreateHoras(cuadro, callback) {
         var startHour = cuadro.startHour;
         var limit = cuadro.limit;
         var duration = cuadro.duration;
@@ -119,10 +117,24 @@ var createHoras = function createHoras(idPista, dia, cb) {
             })(horaString);
         }
         async.parallel(fnArr, function(err, horas) {
+            callback(err, horas, cuadro);
+        });
+    };
+    var updateDate = function updateDate(err, horas, cuadro) {
+        if (err) return (true, null);
+        updateCuadroHour(cuadro, function(err, _cuadro) {
             cb(err, horas);
         });
     };
-    async.waterfall([findPista, findCuadro], done);
+    async.waterfall([findPista, findCuadro, doCreateHoras], updateDate);
+}
+
+var updateCuadroHour = function updateCuadroHour(cuadro, cb) {
+    var id = cuadro._id || cuadro;
+    var today = new Date();
+    models.Cuadro.findOneAndUpdate({_id: id}, {lastDate: today}, function(err , cuadro) {
+        cb(err, cuadro);
+    });
 }
 
 var createHorasDia = function createHorasDia(idPista, cb) {
@@ -159,3 +171,4 @@ exports.findPistas = findPistas;
 exports.findPistasAndCuadros = findPistasAndCuadros;
 exports.findUserAndUrba = findUserAndUrba;
 exports.createHoras = createHorasDia;
+exports.isNewDay = isNewDay;

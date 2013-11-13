@@ -94,6 +94,7 @@ var auth = function auth(options) {
 app.get('/api/pistas/:id/horas', auth({failureRedirect: '/api/unathorized'}), api.getHoras);
 app.get('/api/cuadros/:id', auth({failureRedirect: '/api/unathorized'}), api.getCuadro);
 app.get('/api/unathorized', api.unathorized);
+app.get('/api/pistas/:id/isNewDay', api.isNewDay);
 
 app.post('/login', api.login);
 app.get('/', auth({failureRedirect: '/login'}), routes.index);
