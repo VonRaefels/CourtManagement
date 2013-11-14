@@ -27,6 +27,24 @@ var findPistas = function(idCuadro, cb) {
     });
 }
 
+var findHoras = function findHoras(idPista, cb) {
+    var horas = {};
+    var hoy = [], manana = [];
+    horas.hoy = hoy;
+    horas.manana = manana;
+    models.Hora.find({_idPista: idPista}, function(err, _horas) {
+        if(err) return cb(true, null);
+        _horas.forEach(function(hora) {
+            if(hora.dia == 'hoy') {
+                hoy.push(hora);
+            }else {
+                manana.push(hora);
+            }
+        });
+        cb(null, horas);
+    });
+}
+
 var findPistasAndCuadros = function(idUrba, idCuadro, cb) {
     findCuadros(idUrba, function(err, cuadros) {
         if(err) {
@@ -55,7 +73,7 @@ var findPistaById = function findPistaById(idPista, callback) {
     });
 }
 
-var areThereHours = function(idPista, cb) {
+var areThereHours = function areThereHours(idPista, cb) {
     models.Hora.count({_idPista: idPista}, function(err, count) {
         return cb(err, count > 0);
     });
@@ -80,7 +98,8 @@ var isNewDay = function isNewDay(idPista, cb) {
             lastDate.setHours(startHour.getHours());
             lastDate.setMinutes(startHour.getMinutes());
 
-            cb(null, today > lastDate);
+            // cb(null, today > lastDate);
+            cb(null, true);
         });
     };
     async.waterfall([findPista], checkDate);
@@ -161,8 +180,35 @@ var deleteHoras = function deleteHoras(idPista, dia, cb) {
 
 var swapHoras = function swapHoras(idPista, cb) {
     models.Hora.update({dia: 'manana'}, {dia: 'hoy'}, function(err, numAffected, raw) {
+        console.log(numAffected);
         cb(err, numAffected, raw);
     });
+}
+
+var changeHoras = function changeHoras(idPista, cb) {
+    var doDeleteHoras = function doDeleteHoras(callback) {
+        deleteHoras(idPista, 'hoy', function(err) {
+            callback(err);
+        });
+    }
+    var doSwapHoras = function doSwapHoras(callback) {
+        swapHoras(idPista, function(err, numAffected, raw) {
+            callback(err);
+        });
+    }
+    var doCreateHorasManana = function doCreateHorasManana(callback) {
+        createHoras(idPista, 'manana', function(err, horas) {
+            callback(err);
+        });
+    }
+    var doFindHoras = function doFindHoras(err) {
+        if(err) return cb(true, null);
+        findHoras(idPista, function(_err, horas) {
+            cb(_err, horas);
+        });
+    }
+
+    async.waterfall([doDeleteHoras, doSwapHoras, doCreateHorasManana], doFindHoras);
 }
 
 exports.findUrbas = findUrbas;
@@ -172,3 +218,7 @@ exports.findPistasAndCuadros = findPistasAndCuadros;
 exports.findUserAndUrba = findUserAndUrba;
 exports.createHoras = createHorasDia;
 exports.isNewDay = isNewDay;
+exports.areThereHours = areThereHours;
+exports.findHoras = findHoras;
+exports.changeHoras = changeHoras;
+exports.createHorasDia = createHorasDia;

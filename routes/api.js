@@ -4,20 +4,33 @@ var passport = require('passport');
 
 exports.getHoras = function(req, res) {
     var idPista = req.param('id');
-    helpers.createHoras(idPista, function(err, horas) {
-        if(err) {
-            return res.send(500, {error: 'Could not retrieve horas'});
+    helpers.areThereHours(idPista, function(err, areThereHours) {
+        if(err) return res.send(500, {error: 'Could not retrieve horas'});
+        if(areThereHours) {
+            helpers.isNewDay(idPista, function(err, isNewDay) {
+                if(err) return (true, null);
+                if(isNewDay) {
+                    helpers.changeHoras(idPista, function(err, horas) {
+                        if(err) return res.send(500, {error: 'Could not retrieve horas'});
+                        res.json(horas);
+                    });
+                }else {
+                    helpers.findHoras(idPista, function(err, horas) {
+                        if(err) return res.send(500, {error: 'Could not retrieve horas'});
+                        res.json(horas);
+                    })
+                }
+            });
+        }else {
+            helpers.createHorasDia(idPista, function(err, horas) {
+                if(err) {
+                    return res.send(500, {error: 'Could not retrieve horas'});
+                }
+                return res.json(horas);
+            });
         }
-        return res.json(horas);
     });
 };
-
-exports.createHoras = function(req, res) {
-    var idPista = req.param('id');
-    helpers.createHoras(idPista, function(err, horas) {
-        return res.json({err: err, horas: horas});
-    });
-}
 
 exports.getCuadro = function(req, res) {
     var idCuadro = req.param('id');
@@ -48,11 +61,4 @@ exports.login = function(req, res, next) {
 
 exports.unathorized = function(req, res) {
     res.json({error: '401 Unathorized'});
-}
-
-exports.isNewDay = function(req, res) {
-    var idPista = req.param('id');
-    helpers.isNewDay(idPista, function(err, isNewDay) {
-        res.json({err: err, isNewDay: isNewDay});
-    });
 }
