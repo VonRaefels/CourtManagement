@@ -98,8 +98,7 @@ var isNewDay = function isNewDay(idPista, cb) {
             lastDate.setHours(startHour.getHours());
             lastDate.setMinutes(startHour.getMinutes());
 
-            // cb(null, today > lastDate);
-            cb(null, true);
+            cb(null, today > lastDate);
         });
     };
     async.waterfall([findPista], checkDate);
@@ -179,8 +178,7 @@ var deleteHoras = function deleteHoras(idPista, dia, cb) {
 }
 
 var swapHoras = function swapHoras(idPista, cb) {
-    models.Hora.update({dia: 'manana'}, {dia: 'hoy'}, function(err, numAffected, raw) {
-        console.log(numAffected);
+    models.Hora.update({_idPista: idPista, dia: 'manana'}, {dia: 'hoy'}, { multi: true }, function(err, numAffected, raw) {
         cb(err, numAffected, raw);
     });
 }

@@ -1,5 +1,6 @@
 var passport = require('passport');
-    helpers = require('../models/helpers');
+    helpers = require('../models/helpers')
+    , models = require('../models/schemas');
 
 
 exports.getHoras = function(req, res) {
@@ -32,12 +33,6 @@ exports.getHoras = function(req, res) {
     });
 };
 
-exports.getCuadro = function(req, res) {
-    var idCuadro = req.param('id');
-    var data = [{_id: 1, nombre: "Pista A"}, {_id: 2, nombre: "Pista B"}, {_id: 3, nombre: "Pista C"}];
-    res.json(data);
-}
-
 exports.getCuadros = function(req, res) {
     var idUrba = req.param('id');
     helpers.getCuadros(idUrba, function(err, cuadros) {
@@ -61,4 +56,13 @@ exports.login = function(req, res, next) {
 
 exports.unathorized = function(req, res) {
     res.json({error: '401 Unathorized'});
+}
+
+exports.putReserva = function(req, res) {
+    var idHora = req.id;
+    var user = req.user;
+    models.Hora.findOneAndUpdate({_id: idHora},
+        {_idUser: user.id, reserva: user.name}, function(err, hora) {
+
+        });
 }

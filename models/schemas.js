@@ -60,7 +60,8 @@ var Hora = new Schema(
         hora        : {type: String, required: true},
         _idPista    : {type: ObjectId, required: true, ref: 'Pista'},
         reserva     : {type: String, requried: false},
-        dia         : {type: String, required: true}
+        dia         : {type: String, required: true},
+        _idUser     : {type: ObjectId, required: false}
     },
     {
         collection  : 'Hora'
