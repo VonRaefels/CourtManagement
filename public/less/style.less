@@ -40,15 +40,15 @@
 .libre {
     text-shadow: 1px 1px 1px @white;
     border-color: @border;
-    .gradient(@green, @dark-green);
+    .gradient(@libre-color, @libre-dark-color);
 }
 
 .libre:hover {
-     .gradient(@light-green, @dark-green);
+     .gradient(@libre-light-color, @libre-dark-color);
 }
 
 .libre:active {
-    .hora-active(@green, @dark-green)
+    .hora-active(@libre-color, @libre-dark-color)
 }
 
 /*
@@ -58,15 +58,15 @@
 .ocupada {
     text-shadow: 1px 1px 1px @white;
     border-color: @border;
-    .gradient(@grey, @dark-grey);
+    .gradient(@ocupada-color, @ocupada-dark-color);
 }
 
 .ocupada:hover {
-    .gradient(@light-grey, @dark-grey);
+    .gradient(@ocupada-light-color, @ocupada-dark-color);
 }
 
 .ocupada:active {
-    .hora-active(@grey, @shadow)
+    .hora-active(@ocupada-color, @shadow)
 }
 
 .pista-title {
@@ -80,25 +80,42 @@
 .mine {
     text-shadow: 1px 1px 1px @white;
     border-color: @border;
-    .gradient(@blue, @dark-blue);
+    .gradient(@mine-color, @mine-dark-color);
 }
 
 .mine:hover {
-    .gradient(@light-blue, @dark-blue);
+    .gradient(@mine-light-color, @mine-dark-color);
 }
 
 .mine:active {
-    .hora-active(@blue, @dark-blue)
+    .hora-active(@mine-color, @mine-dark-color)
 }
 
 .pista-title {
     margin: 0 20px 0 0;
 }
 
+/*
+ * Modal
+ */
 
+.reserva-modal-body {
+    position: relative;
+    padding: 15px 20px 0 20px;
+    font-size: 15px;
+}
 
+.reserva-modal-footer {
+    padding: 10px 20px 15px;
+}
 
-
+.reserva-modal-dialog {
+    right: auto;
+    left: 50%;
+    width: 350px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
 
 
 

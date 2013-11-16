@@ -30,19 +30,20 @@
 </script>
 
 <script type="text/x-handlebars-template" id="hora-dialog-template">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <div class="reserva-modal-dialog modal-dialog" >
+        <div class="modal-content ">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Confirma tu reserva</h4>
+                <h3 class="modal-title">Confirma tu reserva</h3>
             </div>
-            <div class="modal-body">
+            <div class="reserva-modal-body">
                 <p>Pista: <strong>{{pista}}</strong></p>
                 <p>Día: <strong>{{dia}}</strong> a las <strong>{{hora}}</strong>
             </div>
             <div class="modal-footer">
                 <button type="button" data-loading-text="Cancelar" autocomplete="off" class="cancelar btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" data-loading-text="Reservando..." autocomplete="off" class="reservar btn btn-primary">Reservar</button>
+                <button type="button" data-loading-text="Reservando..." autocomplete="off" class="reservar btn btn-primary">
+                <span class="glyphicon glyphicon-ok-sign"></span>&nbspReservar</button>
             </div>
         </div>
     </div>
