@@ -1,3 +1,20 @@
+var User = Backbone.Model.extend({
+    initialize: function() {
+    },
+    idAttribute: '_id',
+    url: function() {return '/api/user';},
+    hasReserva: function(hora, cb) {
+        var idHora = hora.id || hora;
+        var horas = this.get('horas');
+        for (var i = horas.length - 1; i >= 0; i--) {
+            if(horas[i]['_id'] === idHora) {
+                return true;
+            }
+        }
+        return false;
+    }
+});
+
 
 var Pista = Backbone.Model.extend({
     initialize: function(){
@@ -11,7 +28,7 @@ var Cuadro = Backbone.Collection.extend({
     model: Pista,
     initialize: function(){
     },
-    url: function() {'/api/cuadros/' + this.id}
+    url: function() {return '/api/cuadros/' + this.id;}
 });
 
 var Hora = Backbone.Model.extend({

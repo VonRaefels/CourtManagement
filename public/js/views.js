@@ -91,6 +91,8 @@ var HoraView = Backbone.View.extend({
         var className = 'ocupada';
         if(this.model.isLibre()) {
             className = 'libre';
+        }else if(App.user.hasReserva(this.model.id)) {
+            className = 'mine'
         }
         this.$el.addClass(className).html(this.template(this.model.toJSON()));
         return this;

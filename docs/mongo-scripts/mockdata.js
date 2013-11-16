@@ -29,7 +29,7 @@ db.Urbanizacion.save({_id: idUrbas[3], name: "Alcobendas"});
 db.Urbanizacion.save({_id: idUrbas[4], name: "Moratalaz"});
 
 db.User.save({_id: idUsers[0], _idUrba: idUrbas[0], name: '74', password: '12345'});
-db.User.save({_id: idUsers[1], _idUrba: idUrbas[0], name: '74', password: '12345'});
+db.User.save({_id: idUsers[1], _idUrba: idUrbas[0], name: '12', password: '12345'});
 db.User.save({_id: idUsers[2], _idUrba: idUrbas[1], name: '74', password: '12345'});
 db.User.save({_id: idUsers[3], _idUrba: idUrbas[2], name: '74', password: '12345'});
 db.User.save({_id: idUsers[4], _idUrba: idUrbas[2], name: '74', password: '12345'});

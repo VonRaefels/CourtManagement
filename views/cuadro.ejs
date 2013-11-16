@@ -54,6 +54,8 @@
                 cuadro = new Cuadro();
                 cuadro.reset(<%- JSON.stringify(pistas) %>);
                 cuadro.id = ('<%= active._id %>');
+
+                user = new User(<%- JSON.stringify(user) %>);
             </script>
             <script src="/js/pistas.js"></script>
         </div>

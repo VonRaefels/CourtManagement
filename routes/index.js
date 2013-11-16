@@ -3,13 +3,14 @@ var helpers = require('../models/helpers');
 exports.cuadro = function(req, res) {
     var idCuadro = req.params.id;
     var idUrba = req.user._idUrba;
-    var user = req.user;
+    var reqUser = req.user;
     helpers.findPistasAndCuadros(idUrba, idCuadro, function(err, cuadros, pistas) {
-        if(err) {
-            return res.send(500, {error: 'Could not retrieve pistas or cuadros'});
-        }
-        findCuadroInArray(cuadros, idCuadro, function(cuadro) {
-            res.render('cuadro', {cuadros: cuadros, active: cuadro, pistas: pistas, user: user});
+        if(err) return res.send(500, {error: 'Could not retrieve pistas or cuadros'});
+        helpers.findUser(reqUser._id, function(err, user) {
+            if(err) return res.send(500, {error: 'Could not retrieve pistas or cuadros'});
+            findCuadroInArray(cuadros, idCuadro, function(cuadro) {
+                res.render('cuadro', {cuadros: cuadros, active: cuadro, pistas: pistas, user: user});
+            });
         });
     });
 }
@@ -30,6 +31,7 @@ function findCuadroInArray(cuadros, idCuadro, cb) {
         if(cuadro._id == idCuadro) {
             return cb(cuadro);
         }
+        return null;
     });
 }
 

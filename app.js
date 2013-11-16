@@ -91,8 +91,10 @@ var auth = function auth(options) {
 
 
 // Routes
+// TO DO Get urbas
 app.get('/api/pistas/:id/horas', auth({failureRedirect: '/api/unathorized'}), api.getHoras);
 app.get('/api/cuadros/:id', auth({failureRedirect: '/api/unathorized'}), api.getCuadro);
+app.get('/api/user', auth({failureRedirect: 'api/unathorized'}), api.getUser);
 app.get('/api/unathorized', api.unathorized);
 app.put('/api/horas/:id', auth({failureRedirect: 'api/unathorized'}), api.putHora);
 

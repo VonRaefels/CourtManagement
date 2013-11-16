@@ -45,6 +45,30 @@ var findHoras = function findHoras(idPista, cb) {
     });
 }
 
+var findUser = function findUser(idUser, cb) {
+    var doFindUser = function(callback) {
+        findUserAndUrba(idUser, function(err, user, urba) {
+            user.urba = urba;
+            callback(err, user);
+        });
+    };
+
+    var findReservas = function(user, callback) {
+        models.Hora.find({_idUser: idUser}, function(err, horas) {
+            if(horas != null) {
+                user.horas = horas;
+                delete user.password;
+            }
+            callback(err, user);
+        });
+    };
+
+    var done = function(err, user) {
+        cb(err, user);
+    }
+    async.waterfall([doFindUser, findReservas], done);
+}
+
 var findPistasAndCuadros = function(idUrba, idCuadro, cb) {
     findCuadros(idUrba, function(err, cuadros) {
         if(err) {
@@ -61,8 +85,9 @@ var findUserAndUrba = function(idUser, cb) {
         if(err) {
             return cb(true, null, null);
         }
-        models.Urbanizacion.findById(user._idUrba, function(err, urba) {
-            cb(err, user, urba);
+        var jsonUser = user.toObject();
+        models.Urbanizacion.findById(jsonUser._idUrba, function(err, urba) {
+            cb(err, jsonUser, urba);
         });
     });
 }
@@ -218,3 +243,4 @@ exports.areThereHours = areThereHours;
 exports.findHoras = findHoras;
 exports.changeHoras = changeHoras;
 exports.createHorasDia = createHorasDia;
+exports.findUser = findUser;

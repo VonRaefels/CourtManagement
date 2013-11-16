@@ -1,5 +1,6 @@
 var App = {
     cuadro: cuadro,
+    user: user,
     views: {
         pistas: {}
     },

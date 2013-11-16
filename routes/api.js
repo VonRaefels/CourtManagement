@@ -62,8 +62,16 @@ exports.putHora = function(req, res) {
     var idHora = req.param('id');
     var user = req.user;
     models.Hora.findOneAndUpdate({_id: idHora, _idUser: undefined},
-        {_idUser: user.id, reserva: user.name}, function(err, hora) {
+        {_idUser: user._id, reserva: user.name}, function(err, hora) {
             if(err) return res.send(500, {error: 'Could not do reserva'});
             res.json(hora);
         });
+}
+
+exports.getUser = function(req, res) {
+    var reqUser = req.user;
+    helpers.findUser(reqUser._id, function(err, user) {
+        if(err) return res.send(500, {error: 'Could not find user'});
+        res.json(user);
+    });
 }
