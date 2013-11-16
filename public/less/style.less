@@ -38,7 +38,7 @@
  */
 
 .libre {
-    text-shadow: 1px 1px 1px @shadow;
+    text-shadow: 1px 1px 1px @white;
     border-color: @border;
     .gradient(@green, @dark-green);
 }
@@ -73,7 +73,27 @@
     margin: 0 20px 0 0;
 }
 
+/*
+ * Hora mine
+ */
 
+.mine {
+    text-shadow: 1px 1px 1px @white;
+    border-color: @border;
+    .gradient(@blue, @dark-blue);
+}
+
+.mine:hover {
+    .gradient(@light-blue, @dark-blue);
+}
+
+.mine:active {
+    .hora-active(@blue, @dark-blue)
+}
+
+.pista-title {
+    margin: 0 20px 0 0;
+}
 
 
 

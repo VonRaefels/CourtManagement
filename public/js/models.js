@@ -3,7 +3,7 @@ var User = Backbone.Model.extend({
     },
     idAttribute: '_id',
     url: function() {return '/api/user';},
-    hasReserva: function(hora, cb) {
+    hasReserva: function(hora) {
         var idHora = hora.id || hora;
         var horas = this.get('horas');
         for (var i = horas.length - 1; i >= 0; i--) {
@@ -12,6 +12,9 @@ var User = Backbone.Model.extend({
             }
         }
         return false;
+    },
+    putReserva: function(hora) {
+        this.get('horas').push(hora.toJSON());
     }
 });
 
@@ -28,6 +31,9 @@ var Cuadro = Backbone.Collection.extend({
     model: Pista,
     initialize: function(){
     },
+    comparator: function(pista) {
+        return pista.get('_id');
+    },
     url: function() {return '/api/cuadros/' + this.id;}
 });
 
@@ -35,7 +41,7 @@ var Hora = Backbone.Model.extend({
     initialize: function(){},
     idAttribute: '_id',
     isLibre: function() {
-        return this.get('_idUser') == undefined;
+        return this.get('_idUser') === undefined;
     },
     isHoy: function() {
         return this.get('dia') == 'hoy';

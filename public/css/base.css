@@ -16,10 +16,10 @@ h1 {
   width: 50%;
   opacity: 0.9;
   z-index: 1050;
-  -webkit-transition: left 0.3s ease-out;
-  -moz-transition: left 0.3s ease-out;
-  -o-transition: left 0.3s ease-out;
-  transition: left 0.3s ease-out 0s;
+  -webkit-transition: left 0.3s ease-out 0.3s;
+  -moz-transition: left 0.3s ease-out 0.3s;
+  -o-transition: left 0.3s ease-out 0.3s;
+  transition: left 0.3s ease-out 0.3s;
 }
 .flyover-centered {
   top: 50%;

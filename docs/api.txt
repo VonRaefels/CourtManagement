@@ -15,3 +15,4 @@ POST /api/login/ -> Realiza el login y crea la sesión.
 --- TO DO ---
 -> Mejorar notificiaciones de reserva para moviles.
 -> Encriptar contraseña con mongoose....
+-> Cambiar nombres de los colores

@@ -11,6 +11,7 @@ events.on('reserva', function(err, hora) {
     }else {
         showAlert('success-reserva', 5000);
         var pistaView = App.views.pistas[hora.collection.pista.id];
+        App.user.putReserva(hora);
         pistaView.repaintHora(hora);
     }
 });
@@ -70,9 +71,6 @@ var PistaView = Backbone.View.extend({
 var HoraView = Backbone.View.extend({
     id: function() { return this.model.id; },
     tagName: 'div',
-    className: function(){
-        return 'hora';
-    },
     events: {
         'click'     : 'reservar'
     },
@@ -94,7 +92,10 @@ var HoraView = Backbone.View.extend({
         }else if(App.user.hasReserva(this.model.id)) {
             className = 'mine'
         }
-        this.$el.addClass(className).html(this.template(this.model.toJSON()));
+        this.$el.removeClass()
+                .addClass(className)
+                .addClass('hora')
+                .html(this.template(this.model.toJSON()));
         return this;
     }
 });
@@ -119,6 +120,7 @@ var HoraDialogView = Backbone.View.extend({
         };
         this.model.save([], {
             success: function(model, response) {
+                console.log(model);
                 reservaCallback(false, model);
             },
             error: function(model, response) {

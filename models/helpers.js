@@ -10,7 +10,7 @@ var findUrbas = function(cb) {
 }
 
 var findCuadros = function(idUrba, cb) {
-    models.Cuadro.find({_idUrba: idUrba}, function(err, cuadros) {
+    models.Cuadro.find({_idUrba: idUrba}).sort([['name', 'descending']]).exec(function(err, cuadros) {
         cb(err, cuadros);
     });
 }
@@ -22,7 +22,7 @@ var findCuadro = function(idCuadro, cb) {
 }
 
 var findPistas = function(idCuadro, cb) {
-    models.Pista.find({_idCuadro: idCuadro}, function(err, pistas)  {
+    models.Pista.find({_idCuadro: idCuadro}).sort([['name', 'descending']]).exec(function(err, pistas)  {
         cb(err, pistas);
     });
 }

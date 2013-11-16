@@ -54,6 +54,7 @@
                 cuadro = new Cuadro();
                 cuadro.reset(<%- JSON.stringify(pistas) %>);
                 cuadro.id = ('<%= active._id %>');
+                cuadro.sort();
 
                 user = new User(<%- JSON.stringify(user) %>);
             </script>
