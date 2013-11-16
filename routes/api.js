@@ -58,11 +58,12 @@ exports.unathorized = function(req, res) {
     res.json({error: '401 Unathorized'});
 }
 
-exports.putReserva = function(req, res) {
-    var idHora = req.id;
+exports.putHora = function(req, res) {
+    var idHora = req.param('id');
     var user = req.user;
-    models.Hora.findOneAndUpdate({_id: idHora},
+    models.Hora.findOneAndUpdate({_id: idHora, _idUser: undefined},
         {_idUser: user.id, reserva: user.name}, function(err, hora) {
-
+            if(err) return res.send(500, {error: 'Could not do reserva'});
+            res.json(hora);
         });
 }

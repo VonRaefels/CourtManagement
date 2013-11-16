@@ -1,5 +1,13 @@
 @body-bg: #62DA9A;
 
+.transform (@left, @right) {
+    -webkit-transform: translate(@left, @right);
+    -o-transform: translate(@left, @right);
+    -ms-transform: translate(@left, @right);
+    transform: translate(@left, @right);
+
+}
+
 .clear {
     clear: both;
 }
@@ -12,3 +20,30 @@ body {
 h1 {
     margin-bottom: 0px;
 }
+
+.flyover {
+    left: 150%;
+    overflow: hidden;
+    position: fixed;
+    width: 50%;
+    opacity: 0.9;
+    z-index: 1050;
+    -webkit-transition: left 0.3s ease-out;
+    -moz-transition: left 0.3s ease-out;
+    -o-transition: left 0.3s ease-out;
+    transition: left 0.3s ease-out 0s;
+}
+
+.flyover-centered {
+    top: 50%;
+    .transform(-50%, -50%);
+}
+
+.flyover.in {
+    left: 50%;
+}
+
+.flyover-bottom {
+    bottom: 10px;
+}
+

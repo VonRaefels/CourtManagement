@@ -1,4 +1,24 @@
+var events = _.extend({}, Backbone.Events);
+
+events.on('reserva', function(err, hora) {
+    var showAlert = function(elId, time) {
+        var $el = $('#' + elId);
+        $el.toggleClass('in');
+        window.setTimeout(function() { $el.removeClass('in'); }, time);
+    }
+    if(err) {
+        showAlert('error-reserva', 3500);
+    }else {
+        showAlert('success-reserva', 5000);
+        var pistaView = App.views.pistas[hora.collection.pista.id];
+        pistaView.repaintHora(hora);
+    }
+});
+
 var PistaView = Backbone.View.extend({
+    initialize: function() {
+        this.children = {};
+    },
     id: function(){ return this.model.id; },
     tagName: 'div',
     className: 'pista',
@@ -17,19 +37,33 @@ var PistaView = Backbone.View.extend({
         var masonry = $(target).find('.horas').data('masonry');
         masonry.layout();
     },
-    renderHoras: function(){
+    renderHoras: function() {
         var horas = this.model.horas;
-        var $el = this.$el;
+        var self = this;
+        this.cacheViewData();
         horas.forEach(function(hora, index){
-            var $horaEl = new HoraView({model: hora}).render().$el;
-            var $hoy = $el.find('.hoy');
-            var $manana = $el.find('.manana');
-            if(hora.get('dia') == 'hoy') {
-                $hoy.append($horaEl);
-            }else {
-                $manana.append($horaEl);
-            }
+            self.renderHora(hora);
         });
+    },
+    cacheViewData: function() {
+        var $el = this.$el;
+        this.$hoy = $el.find('.hoy');
+        this.$manana = $el.find('.manana');
+    },
+    renderHora: function(hora) {
+        var horaView = new HoraView({model: hora});
+        this.children[hora.id] = horaView;
+
+        var $horaEl = horaView.render().$el;
+        if(hora.isHoy()) {
+            this.$hoy.append($horaEl);
+        }else {
+            this.$manana.append($horaEl);
+        }
+    },
+    repaintHora: function(hora) {
+        var horaView = this.children[hora.id];
+        horaView.render();
     }
 });
 
@@ -37,25 +71,28 @@ var HoraView = Backbone.View.extend({
     id: function() { return this.model.id; },
     tagName: 'div',
     className: function(){
-        var className = 'hora';
-        if(this.model.isLibre()) {
-            className += ' libre';
-        }else{
-            className += ' ocupada';
-        }
-        return className;
+        return 'hora';
     },
     events: {
-        'click'     : 'showReservaDialog'
+        'click'     : 'reservar'
     },
-    showReservaDialog: function() {
-        var modalOpt = {keyboard: true, show: true};
-        var $horaDialog = new HoraDialogView({model: this.model}).render().$el;
-        $horaDialog.modal(modalOpt);
+    reservar: function() {
+        if(this.model.isLibre()) {
+            var modalOpt = {keyboard: true, show: true};
+            var $horaDialog = new HoraDialogView({model: this.model}).render().$el;
+            $horaDialog.modal(modalOpt);
+        }else {
+            // TO DO Mostrar aviso o información...
+        }
+
     },
     template: Handlebars.compile($('#hora-template').html()),
     render: function() {
-        this.$el.append(this.template(this.model.toJSON()));
+        var className = 'ocupada';
+        if(this.model.isLibre()) {
+            className = 'libre';
+        }
+        this.$el.addClass(className).html(this.template(this.model.toJSON()));
         return this;
     }
 });
@@ -69,7 +106,23 @@ var HoraDialogView = Backbone.View.extend({
         'click  .reservar'  : 'reservar'
     },
     reservar: function(e) {
-
+        var self = this;
+        var $el = self.$el;
+        var $buttons = $el.find('.reservar, .cancelar');
+        $buttons.button('loading');
+        var reservaCallback = function(err, model) {
+            $buttons.button('reset');
+            $el.modal('hide');
+            events.trigger('reserva', err, model);
+        };
+        this.model.save([], {
+            success: function(model, response) {
+                reservaCallback(false, model);
+            },
+            error: function(model, response) {
+                reservaCallback(true, model);
+            }
+        });
     },
     render: function() {
         var model = this.model.toJSON();

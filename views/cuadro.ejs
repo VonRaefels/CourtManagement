@@ -26,6 +26,21 @@
                 </div>
             </div>
 
+            <!-- Success reserva alert -->
+            <div id="success-reserva" class="alert alert-success flyover flyover-bottom">
+                <h4>¡Reserva realizada con <strong>exito</strong>!</h4>
+                <p>Su reserva se realizó <strong>correctamente</strong>, si lo desea
+                    <strong>puede cancelarla</strong> haciendo click de nuevo sobre la reserva.
+                </p>
+            </div>
+
+            <!-- Erro reserva alert -->
+            <div id="error-reserva" class="jumbotron alert-danger flyover flyover-centered">
+                <h4>Hubo un <stron>problema</stron> con su reserva</h4>
+                <p>Su reserva no se realizo correctamente, intentelo <strong>más tarde</strong>
+                 ó <strong>contacte</strong> con el administrador.
+                </p>
+            </div>
             <%- include templates.ejs %>
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
             <script src="/js/lib/bootstrap.min.js"></script>

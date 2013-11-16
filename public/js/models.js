@@ -20,8 +20,18 @@ var Hora = Backbone.Model.extend({
     isLibre: function() {
         return this.get('_idUser') == undefined;
     },
+    isHoy: function() {
+        return this.get('dia') == 'hoy';
+    },
     url: function() {
-        return '/api/horas/:id'
+        return '/api/horas/' + this.id;
+    },
+    parse: function(response, options) {
+        var hora = new Date(response.hora);
+        var horaString = String('00' + hora.getHours()).slice(-2)
+                         + ':' + String('00' + hora.getMinutes()).slice(-2);
+        response.hora = horaString;
+        return response;
     }
 });
 
@@ -33,7 +43,16 @@ var Horas = Backbone.Collection.extend({
     parse: function(response, options) {
         var hoy = response.hoy;
         var manana = response.manana;
-        return hoy.concat(manana);
+        var horasArr = hoy.concat(manana);
+        horasArr.sort(function (a, b) {
+            var aDate = new Date(a.hora);
+            var bDate = new Date(b.hora);
+
+            if (aDate < bDate) return -1;
+            if (aDate > bDate) return 1;
+            return 0;
+        });
+        return horasArr;
     },
     url: function(){
         return '/api/pistas/' + this.id + '/horas/'}

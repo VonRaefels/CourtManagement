@@ -9,3 +9,28 @@ body {
 h1 {
   margin-bottom: 0px;
 }
+.flyover {
+  left: 150%;
+  overflow: hidden;
+  position: fixed;
+  width: 50%;
+  opacity: 0.9;
+  z-index: 1050;
+  -webkit-transition: left 0.3s ease-out;
+  -moz-transition: left 0.3s ease-out;
+  -o-transition: left 0.3s ease-out;
+  transition: left 0.3s ease-out 0s;
+}
+.flyover-centered {
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.flyover.in {
+  left: 50%;
+}
+.flyover-bottom {
+  bottom: 10px;
+}

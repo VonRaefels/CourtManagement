@@ -60,7 +60,8 @@ app.configure(function(){
       src: pubDir + '/less',
       dest: pubDir + '/css',
       prefix: '/css',
-      force: true
+      force: true,
+      debug: true
   }));
   app.use(passport.initialize());
   app.use(passport.session());
@@ -93,7 +94,7 @@ var auth = function auth(options) {
 app.get('/api/pistas/:id/horas', auth({failureRedirect: '/api/unathorized'}), api.getHoras);
 app.get('/api/cuadros/:id', auth({failureRedirect: '/api/unathorized'}), api.getCuadro);
 app.get('/api/unathorized', api.unathorized);
-app.put('/api/horas/:id', auth({failureRedirect: 'api/unauthorized'}), api.putHora);
+app.put('/api/horas/:id', auth({failureRedirect: 'api/unathorized'}), api.putHora);
 
 app.post('/login', api.login);
 app.get('/', auth({failureRedirect: '/login'}), routes.index);

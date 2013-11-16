@@ -13,6 +13,4 @@ POST /api/login/ -> Realiza el login y crea la sesión.
 
 
 --- TO DO ---
--> Validar el formulario en cliente.
--> Envíar petición ajax del login y mostrar información de error en el cliente.
--> MongoDb, tabla de urbanizaciones y usuarios.
+-> Mejorar notificiaciones de reserva para moviles.

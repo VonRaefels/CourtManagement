@@ -123,16 +123,14 @@ var createHoras = function createHoras(idPista, dia, cb) {
 
         for(var i = 1, l = limit; i <= l; i++) {
             var newDate = new Date(startHour.getTime() + duration * i * 60000);
-            var horaString = String('00' + newDate.getHours()).slice(-2) + ':'
-                            + String('00' + newDate.getMinutes()).slice(-2);
-            (function(horaString) {
+            (function(newDate) {
                 var createHora = function createHora(callback) {
-                    models.Hora.create({hora: horaString, dia: dia, _idPista: idPista}, function(err, hora) {
+                    models.Hora.create({hora: newDate, dia: dia, _idPista: idPista}, function(err, hora) {
                         callback(err, hora);
                     });
                 }
                 fnArr.push(createHora);
-            })(horaString);
+            })(newDate);
         }
         async.parallel(fnArr, function(err, horas) {
             callback(err, horas, cuadro);

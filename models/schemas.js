@@ -57,7 +57,7 @@ var Pista = new Schema(
 
 var Hora = new Schema(
     {
-        hora        : {type: String, required: true},
+        hora        : {type: Date, required: true},
         _idPista    : {type: ObjectId, required: true, ref: 'Pista'},
         reserva     : {type: String, requried: false},
         dia         : {type: String, required: true},
@@ -67,6 +67,15 @@ var Hora = new Schema(
         collection  : 'Hora'
     }
 )
+
+/*
+ * Statics
+ */
+Hora.statics.findSorted = function findSorted(query, callback) {
+    // TO DO Fields and options?
+    return this.find(query).sort('hora').exec(callback);
+}
+
 
 module.exports.Urbanizacion = mongoose.model('Urbanizacion', Urbanizacion);
 module.exports.User = mongoose.model('User', User);
