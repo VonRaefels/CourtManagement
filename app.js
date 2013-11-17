@@ -96,7 +96,7 @@ app.get('/api/pistas/:id/horas', auth({failureRedirect: '/api/unathorized'}), ap
 app.get('/api/cuadros/:id', auth({failureRedirect: '/api/unathorized'}), api.getCuadro);
 app.get('/api/user', auth({failureRedirect: 'api/unathorized'}), api.getUser);
 app.get('/api/unathorized', api.unathorized);
-app.put('/api/horas/:id', auth({failureRedirect: 'api/unathorized'}), api.putHora);
+app.post('/api/horas/:id', auth({failureRedirect: 'api/unathorized'}), api.postHora);
 
 app.post('/login', api.login);
 app.get('/', auth({failureRedirect: '/login'}), routes.index);

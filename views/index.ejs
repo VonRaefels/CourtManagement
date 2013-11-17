@@ -7,6 +7,7 @@
         <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="/css/index.css" rel="stylesheet">
         <link  href="/css/base.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -30,11 +31,9 @@
 
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
             <script src="/js/lib/bootstrap.min.js"></script>
+            <script src="/js/navbar.js"></script>
             <script>
-                $('#logout-btn').on('click', function(e) {
-                    e.preventDefault();
-                    document.location.href = '/logout';
-                });
+                configureNavbar();
             </script>
         </div>
     </body>

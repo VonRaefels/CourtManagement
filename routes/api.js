@@ -58,7 +58,9 @@ exports.unathorized = function(req, res) {
     res.json({error: '401 Unathorized'});
 }
 
-exports.putHora = function(req, res) {
+var horaActions = {}
+
+horaActions['reservar'] = function reservar(req, res) {
     var idHora = req.param('id');
     var user = req.user;
     models.Hora.findOneAndUpdate({_id: idHora, _idUser: undefined},
@@ -66,6 +68,26 @@ exports.putHora = function(req, res) {
             if(err) return res.send(500, {error: 'Could not do reserva'});
             res.json(hora);
         });
+}
+
+horaActions['anular'] = function anular(req, res) {
+    var idHora = req.param('id');
+    var user = req.user;
+    models.Hora.findById(idHora, function(err, hora) {
+        hora._idUser = undefined;
+        hora.reserva = undefined;
+        hora.save(function(err, hora) {
+            if(err) return res.send(500, {error: 'Could not do anulacion'});
+            res.json(hora);
+        });
+    });
+}
+
+exports.postHora = function(req, res) {
+    var action = req.param('action');
+    var fn = horaActions[action];
+    if(fn === undefined) return res.send(500, {error: 'Unkown action for hora: ' + action});
+    fn(req, res);
 }
 
 exports.getUser = function(req, res) {

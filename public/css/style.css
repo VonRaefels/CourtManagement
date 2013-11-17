@@ -1,62 +1,164 @@
 /*
- * Alerts
+ * Alerts and info
  */
-#error-reserva h4 {
-  font-size: 30px;
+#info {
+  font-size: 20px;
+  margin-bottom: -3px;
+  margin-top: -3px;
+}
+#info-content-list {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bull {
+  font-weight: bold;
+  font-size: 40px;
+  vertical-align: middle;
+  margin-right: 10px;
+  line-height: 30px;
+}
+.bull-libre {
+  color: #63cf75;
+}
+.bull-ocupada {
+  color: #d0d0d0;
+}
+.bull-mine {
+  color: #b2ceef;
 }
 /*
  * Hora
  */
-.pista {
-  margin-top: 19.5px;
-  margin-bottom: 65px;
+@media screen and (min-width: 768px) {
+  .reserva-modal-dialog {
+    width: 350px;
+  }
+  .hora {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    float: left;
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    box-shadow: none;
+    box-shadow: 1px 1px 4px #D0D0D0;
+    moz-box-shadow: 1px 1px 4px #D0D0D0;
+    border-radius: 5.2px;
+    padding: 13px;
+    margin-bottom: 19.5px;
+    width: 130px;
+    height: 130px;
+  }
+  .hora hr {
+    background-color: #969696;
+    border: 0;
+    color: #969696;
+    height: 2.6px;
+    width: 80%;
+    margin-top: 0;
+    margin-bottom: 19.5px;
+  }
+  .hora .lbl-hora {
+    letter-spacing: 1px;
+    color: #969696;
+    font-size: 18.571428571428573px;
+    font-weight: bold;
+  }
+  .hora .lbl-reserva {
+    letter-spacing: 1px;
+    color: #757575;
+    font-size: 32.5px;
+    font-weight: bold;
+    margin-top: -6.5px;
+  }
+  .hora .asterisk {
+    font-size: 43.333333333333336px;
+  }
+  .bookmark {
+    font-size: 16.9px;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    margin-right: -13px;
+    margin-top: -15px;
+    top: 0px;
+    color: #757575;
+  }
+  .pista {
+    margin-top: 19.5px;
+    margin-bottom: 65px;
+  }
 }
-.hora {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  float: left;
-  border-style: solid;
-  border-width: 1px;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  box-shadow: none;
-  box-shadow: 1px 1px 4px #D0D0D0;
-  moz-box-shadow: 1px 1px 4px #D0D0D0;
-  border-radius: 5.2px;
-  padding: 13px;
-  margin-bottom: 19.5px;
-  width: 130px;
-  height: 130px;
-}
-.hora hr {
-  background-color: #969696;
-  border: 0;
-  color: #969696;
-  height: 2.6px;
-  width: 80%;
-  margin-top: 0;
-  margin-bottom: 19.5px;
-}
-.hora .lbl-hora {
-  letter-spacing: 1px;
-  color: #969696;
-  font-size: 18.571428571428573px;
-  font-weight: bold;
-}
-.hora .lbl-reserva {
-  letter-spacing: 1px;
-  color: #757575;
-  font-size: 32.5px;
-  font-weight: bold;
-  margin-top: -6.5px;
-}
-.hora .asterisk {
-  font-size: 43.333333333333336px;
+@media screen and (max-width: 766px) {
+  .hora {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    float: left;
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    box-shadow: none;
+    box-shadow: 1px 1px 4px #D0D0D0;
+    moz-box-shadow: 1px 1px 4px #D0D0D0;
+    border-radius: 3.6px;
+    padding: 9px;
+    margin-bottom: 13.5px;
+    width: 90px;
+    height: 90px;
+  }
+  .hora hr {
+    background-color: #969696;
+    border: 0;
+    color: #969696;
+    height: 1.8px;
+    width: 80%;
+    margin-top: 0;
+    margin-bottom: 13.5px;
+  }
+  .hora .lbl-hora {
+    letter-spacing: 1px;
+    color: #969696;
+    font-size: 12.857142857142858px;
+    font-weight: bold;
+  }
+  .hora .lbl-reserva {
+    letter-spacing: 1px;
+    color: #757575;
+    font-size: 22.5px;
+    font-weight: bold;
+    margin-top: -4.5px;
+  }
+  .hora .asterisk {
+    font-size: 30px;
+  }
+  .bookmark {
+    font-size: 11.7px;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    margin-right: -9px;
+    margin-top: -11px;
+    top: 0px;
+    color: #757575;
+  }
+  .pista {
+    margin-top: 13.5px;
+    margin-bottom: 45px;
+  }
 }
 .horas {
   margin-top: 10px;
@@ -64,6 +166,9 @@
 .hora:hover {
   box-shadow: 4px 4px 4px #D0D0D0;
   moz-box-shadow: 4px 4px 4px #D0D0D0;
+}
+.bookmark span {
+  top: 0px;
 }
 /*
  * Hora libre
@@ -87,12 +192,14 @@
   background-image: -webkit-linear-gradient(top, #99ffac 0%, #63cf75 100%);
   background-image: -ms-linear-gradient(to bottom, #99ffac 0%, #63cf75 100%);
   background-image: linear-gradient(to bottom, #99ffac 0%, #63cf75 100%);
+  border-color: #bcbcbc;
 }
 .libre:active {
   box-shadow: 3px 3px 5px #63cf75 inset;
   moz-box-shadow: 3px 3px 5px #63cf75 inset;
   background-color: #7ff092;
   background-image: none;
+  border-color: #bcbcbc;
 }
 /*
  * Hora ocupada
@@ -116,12 +223,14 @@
   background-image: -webkit-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
   background-image: -ms-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
   background-image: linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  border-color: #bcbcbc;
 }
 .ocupada:active {
   box-shadow: 3px 3px 5px #d0d0d0 inset;
   moz-box-shadow: 3px 3px 5px #d0d0d0 inset;
   background-color: #f2f2f2;
   background-image: none;
+  border-color: #bcbcbc;
 }
 .pista-title {
   margin: 0 20px 0 0;
@@ -148,12 +257,14 @@
   background-image: -webkit-linear-gradient(top, #d4e4f6 0%, #b2ceef 100%);
   background-image: -ms-linear-gradient(to bottom, #d4e4f6 0%, #b2ceef 100%);
   background-image: linear-gradient(to bottom, #d4e4f6 0%, #b2ceef 100%);
+  border-color: #bcbcbc;
 }
 .mine:active {
   box-shadow: 3px 3px 5px #b2ceef inset;
   moz-box-shadow: 3px 3px 5px #b2ceef inset;
   background-color: #c3d9f2;
   background-image: none;
+  border-color: #bcbcbc;
 }
 .pista-title {
   margin: 0 20px 0 0;
@@ -168,11 +279,4 @@
 }
 .reserva-modal-footer {
   padding: 10px 20px 15px;
-}
-.reserva-modal-dialog {
-  right: auto;
-  left: 50%;
-  width: 350px;
-  padding-top: 30px;
-  padding-bottom: 30px;
 }

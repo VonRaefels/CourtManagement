@@ -15,6 +15,15 @@ var User = Backbone.Model.extend({
     },
     putReserva: function(hora) {
         this.get('horas').push(hora.toJSON());
+    },
+    removeReserva: function(hora) {
+        var idHora = hora.id || hora;
+        var horas = this.get('horas');
+        for (var i = horas.length - 1; i >= 0; i--) {
+            if(horas[i]['_id'] === idHora) {
+                 horas.splice(i, 1);
+            }
+        }
     }
 });
 
@@ -55,6 +64,36 @@ var Hora = Backbone.Model.extend({
                          + ':' + String('00' + hora.getMinutes()).slice(-2);
         response.hora = horaString;
         return response;
+    },
+    isUserReserved: function() {
+        return App.user.hasReserva(this.id);
+    },
+    onActionSuccess: function(cb) {
+        var self = this;
+        return function(model, response) {
+            var hashSet = self.parse(model, null);
+            self.clear();
+            self.set(hashSet);
+            cb(self, model);
+        }
+    },
+    action: function(action, successCb, errorCb, params) {
+        var url = this.url(),
+        options = {
+            url: url,
+            type: 'POST',
+            data: JSON.stringify({action: action}),
+            contentType: 'application/json',
+            success: this.onActionSuccess(successCb),
+            error: errorCb
+        };
+        return (this.sync || Backbone.sync).call(this, null, this, options);
+    },
+    reservar: function(successCb, errorCb) {
+        this.action('reservar', successCb, errorCb);
+    },
+    anular: function(successCb, errorCb) {
+        this.action('anular', successCb, errorCb);
     }
 });
 

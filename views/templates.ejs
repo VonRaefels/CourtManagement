@@ -18,6 +18,9 @@
 </script>
 
 <script type="text/x-handlebars-template" id="hora-template">
+    {{#if mine}}
+        <div class="bookmark"><span class="glyphicon glyphicon-bookmark"></span></div>
+    {{/if}}
     <label class="lbl-hora">{{hora}}</label>
     <hr/>
     <label class="lbl-reserva">
@@ -31,16 +34,16 @@
 
 <script type="text/x-handlebars-template" id="hora-dialog-template">
     <div class="reserva-modal-dialog modal-dialog" >
-        <div class="modal-content ">
+        <div class="modal-content alert-info">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="modal-title">Confirma tu reserva</h3>
+                <h3 class="modal-title"><span class="glyphicon glyphicon-question-sign"></span>    Confirma tu reserva</h3>
             </div>
-            <div class="reserva-modal-body">
+            <div class="modal-body">
                 <p>Pista: <strong>{{pista}}</strong></p>
                 <p>Día: <strong>{{dia}}</strong> a las <strong>{{hora}}</strong>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer ">
                 <button type="button" data-loading-text="Cancelar" autocomplete="off" class="cancelar btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" data-loading-text="Reservando..." autocomplete="off" class="reservar btn btn-primary">
                 <span class="glyphicon glyphicon-ok-sign"></span>&nbspReservar</button>
@@ -49,4 +52,22 @@
     </div>
 </script>
 
-
+<script type="text/x-handlebars-template" id="anular-dialog-template">
+    <div class="reserva-modal-dialog modal-dialog " >
+        <div class="modal-content alert-danger">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title"><span class="glyphicon glyphicon-question-sign"></span>    ¿Anular su reserva?</h3>
+            </div>
+            <div class="reserva-modal-body">
+                <p>Pista: <strong>{{pista}}</strong></p>
+                <p>Día: <strong>{{dia}}</strong> a las <strong>{{hora}}</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-loading-text="Cancelar" autocomplete="off" class="cancelar btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" data-loading-text="Anular..." autocomplete="off" class="anular btn btn-danger">
+                <span class="glyphicon glyphicon-warning-sign"></span>&nbsp&nbspAnular</button>
+            </div>
+        </div>
+    </div>
+</script>

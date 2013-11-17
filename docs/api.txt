@@ -15,3 +15,11 @@ POST /api/login/ -> Realiza el login y crea la sesión.
 --- TO DO ---
 -> Mejorar notificiaciones de reserva para moviles.
 -> Encriptar contraseña con mongoose....
+-> Cambiar a rojo las ocupadas
+-> Comprobar el numero de reservas cuando se hace una reserva
+-> Demostración en la pantalla de inicio de como usar el sistema
+-> Ajax polling para las horas cada 10 segundos.
+-> Pantalla de login con más opciones, descripción del sistema?, contacto, precios
+
+-> Problema firefox movil...
+-> Problema iconos navegador nativo android.

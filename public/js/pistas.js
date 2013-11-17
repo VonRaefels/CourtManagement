@@ -37,10 +37,7 @@ var App = {
         });
     },
     events: function() {
-        $('#logout-btn').on('click', function(e) {
-            e.preventDefault();
-            document.location.href = '/logout';
-        });
+        configureNavbar();
     }
 }
 $(document).ready(App.init);

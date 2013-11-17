@@ -1,27 +1,93 @@
 @import 'pistas.less';
 
 /*
- * Alerts
+ * Alerts and info
  */
 
- #error-reserva h4 {
-    font-size: 30px;
- }
+#info {
+    font-size: 20px;
+    margin-bottom: -3px;
+    margin-top: -3px;
+}
+
+#info-content-list {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.bull {
+    font-weight: bold;
+    font-size: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+    line-height: 30px;
+}
+
+.bull-libre {
+    color: @libre-dark-color;
+}
+
+.bull-ocupada {
+    color: @shadow;
+}
+
+.bull-mine {
+    color: @mine-dark-color;
+}
 
 
 /*
  * Hora
  */
 
-@size: 130px;
+@media screen and (min-width: 768px) {
+    @size: 130px;
 
-.pista {
-    margin-top: (15 * @size) / 100;
-    margin-bottom: (50 * @size) / 100;
+    .reserva-modal-dialog {
+        width: 350px;
+    }
+
+    .hora {
+        .hora-mixin(@size);
+    }
+    .bookmark {
+        font-size: (13 * @size) / 100;
+        position: relative;
+        overflow: hidden;
+        float: left;
+        margin-right: -(10 * @size) / 100;
+        margin-top: (-(10 * @size) / 100 - 2);
+        top: 0px;
+        color: @reserva-text;
+    }
+    .pista {
+        margin-top: (15 * @size) / 100;
+        margin-bottom: (50 * @size) / 100;
+    }
 }
 
-.hora {
-    .hora-mixin(@size);
+@media screen and (max-width: 766px) {
+    @size: 90px;
+
+    .hora {
+        .hora-mixin(@size);
+    }
+    .bookmark {
+        font-size: (13 * @size) / 100;
+        position: relative;
+        overflow: hidden;
+        float: left;
+        margin-right: -(10 * @size) / 100;
+        margin-top: (-(10 * @size) / 100 - 2);
+        top: 0px;
+        color: @reserva-text;
+    }
+    .pista {
+        margin-top: (15 * @size) / 100;
+        margin-bottom: (50 * @size) / 100;
+    }
 }
 
 .horas {
@@ -31,6 +97,10 @@
 .hora:hover {
     box-shadow: 4px 4px 4px #D0D0D0;
     moz-box-shadow: 4px 4px 4px #D0D0D0;
+}
+
+.bookmark span {
+    top: 0px;
 }
 
 /*
@@ -45,10 +115,12 @@
 
 .libre:hover {
      .gradient(@libre-light-color, @libre-dark-color);
+     border-color: @border-hover;
 }
 
 .libre:active {
-    .hora-active(@libre-color, @libre-dark-color)
+    .hora-active(@libre-color, @libre-dark-color);
+    border-color: @border-hover;
 }
 
 /*
@@ -63,10 +135,12 @@
 
 .ocupada:hover {
     .gradient(@ocupada-light-color, @ocupada-dark-color);
+    border-color: @border-hover;
 }
 
 .ocupada:active {
-    .hora-active(@ocupada-color, @shadow)
+    .hora-active(@ocupada-color, @shadow);
+    border-color: @border-hover;
 }
 
 .pista-title {
@@ -85,10 +159,12 @@
 
 .mine:hover {
     .gradient(@mine-light-color, @mine-dark-color);
+    border-color: @border-hover;
 }
 
 .mine:active {
-    .hora-active(@mine-color, @mine-dark-color)
+    .hora-active(@mine-color, @mine-dark-color);
+    border-color: @border-hover;
 }
 
 .pista-title {
@@ -109,13 +185,7 @@
     padding: 10px 20px 15px;
 }
 
-.reserva-modal-dialog {
-    right: auto;
-    left: 50%;
-    width: 350px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
+
 
 
 
