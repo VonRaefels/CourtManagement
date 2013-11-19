@@ -63,11 +63,19 @@ var horaActions = {}
 horaActions['reservar'] = function reservar(req, res) {
     var idHora = req.param('id');
     var user = req.user;
-    models.Hora.findOneAndUpdate({_id: idHora, _idUser: undefined},
-        {_idUser: user._id, reserva: user.name}, function(err, hora) {
+    helpers.puedeReservar(user, idHora, function(err, puede) {
+        if(err) return res.send(500, {error: 'Could not do reserva'});
+        console.log(puede);
+        if(!puede) {
+            return res.json({max: true});
+        }
+        models.Hora.findOneAndUpdate({_id: idHora, _idUser: undefined},
+            {_idUser: user._id, reserva: user.name}, function(err, hora) {
             if(err) return res.send(500, {error: 'Could not do reserva'});
             res.json(hora);
         });
+    })
+
 }
 
 horaActions['anular'] = function anular(req, res) {

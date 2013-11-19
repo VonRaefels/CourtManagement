@@ -34,7 +34,7 @@
                 </p>
             </div>
 
-            <!-- Erro reserva alert -->
+            <!-- Error reserva alert -->
             <div id="error-reserva" class="alert alert-danger flyover flyover-centered">
                 <h4><strong>Hubo un problema con su reserva</strong></h4>
                 <p>Su reserva no se realizo correctamente, intentelo <strong>más tarde</strong>
@@ -49,13 +49,23 @@
                 </p>
             </div>
 
-            <!-- Erro anulación alert -->
+            <!-- Error anulación alert -->
             <div id="error-anulacion" class="alert alert-danger flyover flyover-centered">
                 <h4><strong>No se pudo anular su reserva</strong></h4>
                 <p>Su reserva <strong>no se anuló</strong> correctamente, intentelo <strong>más tarde</strong>
                  ó <strong>contacte</strong> con el administrador.
                 </p>
             </div>
+
+            <!-- Máximo reservas error-->
+            <div id="maximo-reservas-error" class="alert alert-warning flyover flyover-centered">
+                <h4><strong>Ha alcanzado el número máximo de reservas</strong></h4>
+                <p>Usted ha reservado el <strong>máximo de reservas</strong> posibles, por favor,
+                pruebe a <strong>anular</strong> otra reserva para poder continuar.
+                </p>
+            </div>
+
+
             <%- include templates.ejs %>
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
             <script src="/js/lib/bootstrap.min.js"></script>
@@ -67,10 +77,11 @@
             <script src="/js/views.js"></script>
             <script src="/js/models.js"></script>
             <script>
-                cuadro = new Cuadro();
-                cuadro.reset(<%- JSON.stringify(pistas) %>);
-                cuadro.id = ('<%= active._id %>');
-                cuadro.sort();
+                cuadros = new Cuadros(<%- JSON.stringify(cuadros) %>);
+                cuadro = new Cuadro(<%- JSON.stringify(active) %>);
+                pistas = new Pistas(cuadro);
+                pistas.reset(<%- JSON.stringify(pistas) %>);
+                pistas.sort();
 
                 user = new User(<%- JSON.stringify(user) %>);
             </script>

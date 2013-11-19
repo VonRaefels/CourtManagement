@@ -16,7 +16,7 @@ var findCuadros = function(idUrba, cb) {
 }
 
 var findCuadro = function(idCuadro, cb) {
-    models.Cuadro.findOne(idCuadro, function(err, cuadro) {
+    models.Cuadro.findById(idCuadro, function(err, cuadro) {
         cb(err, cuadro);
     });
 }
@@ -25,6 +25,43 @@ var findPistas = function(idCuadro, cb) {
     models.Pista.find({_idCuadro: idCuadro}).sort([['name', 'descending']]).exec(function(err, pistas)  {
         cb(err, pistas);
     });
+}
+
+var puedeReservar = function(user, idHora, cb) {
+    var findPista = function(callback) {
+        models.Hora.findById(idHora, function(err, hora) {
+            if(err) return callback(true, null);
+            models.Pista.findById(hora._idPista, function(err, pista) {
+                callback(err, pista, hora);
+            });
+        });
+    };
+
+    var findPistas = function(pista, hora, callback) {
+        models.Cuadro.findById(pista._idCuadro, function(err, cuadro) {
+            if(err) return callback(true, null);
+            models.Pista.find({_idCuadro: cuadro._id}, function(err, pistas) {
+                callback(err, pistas, cuadro, hora);
+            });
+        })
+    };
+
+    var findUserHoras = function(pistas, cuadro, hora, callback) {
+        var query = models.Hora.count({_idUser: user._id, dia: hora.dia});
+        for (var i = pistas.length - 1; i >= 0; i--) {
+            query = query.or([{_idPista: pistas[0]._id}]);
+        };
+        query.exec(function(err, count) {
+            callback(err, count, cuadro);
+        });
+    };
+
+    var done = function(err, count, cuadro) {
+        if(err) return cb(true, false);
+        cb(err, count < cuadro.max);
+    };
+
+    async.waterfall([findPista, findPistas, findUserHoras], done);
 }
 
 var findHoras = function findHoras(idPista, cb) {
@@ -244,3 +281,4 @@ exports.findHoras = findHoras;
 exports.changeHoras = changeHoras;
 exports.createHorasDia = createHorasDia;
 exports.findUser = findUser;
+exports.puedeReservar = puedeReservar;

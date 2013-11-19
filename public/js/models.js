@@ -1,29 +1,42 @@
 var User = Backbone.Model.extend({
-    initialize: function() {
+    initialize: function(data) {
+        this.parse(data);
     },
     idAttribute: '_id',
     url: function() {return '/api/user';},
+    parse: function(response, options) {
+        var horas = response.horas;
+        this.horas = new Horas();
+        for (var i = horas.length - 1; i >= 0; i--) {
+            this.horas.add(new Hora(horas[i]));
+        }
+        return response;
+    },
     hasReserva: function(hora) {
         var idHora = hora.id || hora;
         var horas = this.get('horas');
-        for (var i = horas.length - 1; i >= 0; i--) {
-            if(horas[i]['_id'] === idHora) {
-                return true;
-            }
-        }
-        return false;
+        return this.horas.get(idHora) != undefined;
     },
     putReserva: function(hora) {
-        this.get('horas').push(hora.toJSON());
+        this.horas.add(hora);
     },
     removeReserva: function(hora) {
-        var idHora = hora.id || hora;
-        var horas = this.get('horas');
+        this.horas.remove(hora);
+    },
+    puedeReservar: function(hora) {
+        var horas = this.horas.where({dia: hora.get('dia')});
+        var count = 0;
         for (var i = horas.length - 1; i >= 0; i--) {
-            if(horas[i]['_id'] === idHora) {
-                 horas.splice(i, 1);
+            var _hora = horas[i];
+            var pista = App.pistas.get(hora.get('_idPista'));
+            var _pista = App.pistas.get(_hora.get('_idPista'));
+            if(_pista === undefined) continue;
+            var sameCuadro = pista.get('_idCuadro') == _pista.get('_idCuadro');
+            if(sameCuadro) {
+                 count++;
             }
         }
+        return count < App.cuadro.get('max');
     }
 });
 
@@ -36,14 +49,28 @@ var Pista = Backbone.Model.extend({
     idAttribute: '_id'
 });
 
-var Cuadro = Backbone.Collection.extend({
+var Pistas = Backbone.Collection.extend({
     model: Pista,
-    initialize: function(){
+    initialize: function(cuadro){
+        this.cuadro = cuadro;
     },
     comparator: function(pista) {
         return pista.get('_id');
     },
-    url: function() {return '/api/cuadros/' + this.id;}
+    url: function() {return '/api/cuadros/' + cuadro.id + '/pistas/'}
+});
+
+var Cuadro = Backbone.Model.extend({
+    initialize: function() {
+    },
+    url: function() {return 'api/cuadros/' + this.id}
+});
+
+var Cuadros = Backbone.Collection.extend({
+    model: Cuadro,
+    initialize: function() {
+    },
+    url: 'api/cuadros'
 });
 
 var Hora = Backbone.Model.extend({
@@ -59,6 +86,7 @@ var Hora = Backbone.Model.extend({
         return '/api/horas/' + this.id;
     },
     parse: function(response, options) {
+        if(response.max) return response;
         var hora = new Date(response.hora);
         var horaString = String('00' + hora.getHours()).slice(-2)
                          + ':' + String('00' + hora.getMinutes()).slice(-2);
@@ -71,6 +99,7 @@ var Hora = Backbone.Model.extend({
     onActionSuccess: function(cb) {
         var self = this;
         return function(model, response) {
+            if(model.max) return cb(model, response);
             var hashSet = self.parse(model, null);
             self.clear();
             self.set(hashSet);
@@ -90,7 +119,12 @@ var Hora = Backbone.Model.extend({
         return (this.sync || Backbone.sync).call(this, null, this, options);
     },
     reservar: function(successCb, errorCb) {
-        this.action('reservar', successCb, errorCb);
+        // if(App.user.puedeReservar(this)) {
+            this.action('reservar', successCb, errorCb);
+        // }else {
+
+        // }
+
     },
     anular: function(successCb, errorCb) {
         this.action('anular', successCb, errorCb);

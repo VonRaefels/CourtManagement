@@ -6,14 +6,18 @@ var showAlert = function(elId, time) {
     window.setTimeout(function() { $el.removeClass('in'); }, time);
 }
 
-events.on('reserva', function(err, hora) {
+events.on('reserva', function(err, model) {
     if(err) {
         showAlert('error-reserva', 3500);
     }else {
-        showAlert('success-reserva', 5000);
-        var pistaView = App.views.pistas[hora.collection.pista.id];
-        App.user.putReserva(hora);
-        pistaView.repaintHora(hora);
+        if(model.max) {
+            showAlert('maximo-reservas-error', 5000);
+        }else {
+            showAlert('success-reserva', 5000);
+            var pistaView = App.views.pistas[model.collection.pista.id];
+            App.user.putReserva(model);
+            pistaView.repaintHora(model);
+        }
     }
 });
 events.on('anulacion', function(err, hora) {
@@ -45,6 +49,7 @@ var PistaView = Backbone.View.extend({
     },
     layout: function(e) {
         e.preventDefault();
+        App.destroyPopover();
         var target = $(e.target).attr('href');
         var masonry = $(target).find('.horas').data('masonry');
         masonry.layout();
@@ -86,16 +91,19 @@ var HoraView = Backbone.View.extend({
         'click'     : 'reservar'
     },
     reservar: function() {
-        if(this.model.isLibre()) {
-            var modalOpt = {keyboard: true, show: true};
-            var $horaDialog = new HoraDialogView({model: this.model}).render().$el;
-            $horaDialog.modal(modalOpt);
-        }else if(this.model.isUserReserved()) {
-            var modalOpt = {keyboard: true, show: true};
-            var $anularDialog = new AnularDialogView({model: this.model}).render().$el;
-            $anularDialog.modal(modalOpt);
+        if(this.model.isUserReserved()) {
+                var modalOpt = {keyboard: true, show: true};
+                var $anularDialog = new AnularDialogView({model: this.model}).render().$el;
+                $anularDialog.modal(modalOpt);
+        }else if(App.user.puedeReservar(this.model)) {
+            if(this.model.isLibre()) {
+                var modalOpt = {keyboard: true, show: true};
+                var $horaDialog = new HoraDialogView({model: this.model}).render().$el;
+                $horaDialog.modal(modalOpt);
+            }
+        }else {
+            App.showPopOver(this.$el);
         }
-
     },
     template: Handlebars.compile($('#hora-template').html()),
     render: function() {

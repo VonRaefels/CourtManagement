@@ -38,7 +38,8 @@ var Cuadro = new Schema(
         startHour   : {type: Date, required: true},
         lastDate    : {type: Date},
         duration    : {type: Number, required: true},
-        limit       : {type: Number}
+        limit       : {type: Number},
+        max         : {type: Number, required: true}
     },
     {
         collection  : 'Cuadro'

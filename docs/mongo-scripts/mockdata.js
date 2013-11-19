@@ -35,11 +35,11 @@ db.User.save({_id: idUsers[3], _idUrba: idUrbas[0], name: '14', password: '12345
 db.User.save({_id: idUsers[4], _idUrba: idUrbas[0], name: '15', password: '12345'});
 db.User.save({_id: idUsers[5], _idUrba: idUrbas[0], name: '16', password: '12345'});
 
-db.Cuadro.save({_id: idCuadros[0], _idUrba: idUrbas[0], name: 'Tenis', startHour: startHour, duration: 90, limit: 12});
-db.Cuadro.save({_id: idCuadros[1], _idUrba: idUrbas[0], name: 'Padel', startHour: startHour, duration: 60, limit: 10});
-db.Cuadro.save({_id: idCuadros[2], _idUrba: idUrbas[0], name: 'Squash', startHour: startHour, duration: 90, limit: 10});
-db.Cuadro.save({_id: idCuadros[3], _idUrba: idUrbas[1], name: 'Tenis', startHour: startHour, duration: 90, limit: 10});
-db.Cuadro.save({_id: idCuadros[4], _idUrba: idUrbas[2], name: 'Tenis', startHour: startHour, duration: 90, limit: 10});
+db.Cuadro.save({_id: idCuadros[0], _idUrba: idUrbas[0], name: 'Tenis', startHour: startHour, duration: 90, limit: 12, max: 1});
+db.Cuadro.save({_id: idCuadros[1], _idUrba: idUrbas[0], name: 'Padel', startHour: startHour, duration: 60, limit: 10, max: 1});
+db.Cuadro.save({_id: idCuadros[2], _idUrba: idUrbas[0], name: 'Squash', startHour: startHour, duration: 90, limit: 10, max: 1});
+db.Cuadro.save({_id: idCuadros[3], _idUrba: idUrbas[1], name: 'Tenis', startHour: startHour, duration: 90, limit: 10, max: 1});
+db.Cuadro.save({_id: idCuadros[4], _idUrba: idUrbas[2], name: 'Tenis', startHour: startHour, duration: 90, limit: 10, max: 1});
 
 db.Pista.save({_id: idPistas[0], _idCuadro: idCuadros[0], name: 'Pista Norte'});
 db.Pista.save({_id: idPistas[1], _idCuadro: idCuadros[0], name: 'Pista Sur'});
