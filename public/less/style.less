@@ -39,7 +39,7 @@
 }
 
 .bull-ocupada {
-    color: @shadow;
+    color: @ocupada-color;
 }
 
 .bull-mine {
@@ -78,11 +78,12 @@
 }
 
 @media screen and (max-width: 766px) {
-    @size: 90px;
+    @size: 85px;
 
     .hora {
         .hora-mixin(@size);
     }
+
     .bookmark {
         font-size: (13 * @size) / 100;
         position: relative;
@@ -100,6 +101,7 @@
 }
 
 .horas {
+    text-align: center;
     margin-top: 10px;
     display: block;
     -webkit-transition: opacity 0.5s ease-in;
@@ -127,7 +129,7 @@
  */
 
 .libre {
-    text-shadow: 1px 1px 1px @white;
+    text-shadow: 1px 1px 1px @hora-text-shadow;
     border-color: @border;
     .gradient(@libre-color, @libre-dark-color);
 }
@@ -147,19 +149,28 @@
  */
 
 .ocupada {
-    text-shadow: 1px 1px 1px @white;
+    text-shadow: 1px 1px 1px @ocupada-text-shadow;
     border-color: @border;
-    .gradient(@ocupada-color, @ocupada-dark-color);
+    background-color: @ocupada-color;
+
+    .lbl-hora {
+        color: @reserva-text-ocupada;
+    }
+
+    .lbl-reserva {
+        color: @reserva-text-ocupada;
+    }
+
+    hr {
+        background-color: @reserva-text-ocupada;
+    }
 }
+
 
 .ocupada:hover {
-    .gradient(@ocupada-light-color, @ocupada-dark-color);
-    border-color: @border-hover;
-}
-
-.ocupada:active {
-    .hora-active(@ocupada-color, @shadow);
-    border-color: @border-hover;
+    border-color: @border;
+    box-shadow: none;
+    moz-box-shadow: none;
 }
 
 .pista-title {
@@ -171,9 +182,21 @@
  */
 
 .mine {
-    text-shadow: 1px 1px 1px @white;
+    text-shadow: 1px 1px 1px @ocupada-text-shadow;
     border-color: @border;
     .gradient(@mine-color, @mine-dark-color);
+
+    .lbl-hora {
+        color: @reserva-text-ocupada;
+    }
+
+    .lbl-reserva {
+        color: @reserva-text-ocupada;
+    }
+
+    hr {
+        background-color: @reserva-text-ocupada;
+    }
 }
 
 .mine:hover {

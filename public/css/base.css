@@ -10,6 +10,9 @@ h1 {
   margin-bottom: 0px;
 }
 .flyover {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #CCC;
   left: 150%;
   overflow: hidden;
   position: fixed;

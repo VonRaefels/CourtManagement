@@ -29,10 +29,10 @@
   color: #63cf75;
 }
 .bull-ocupada {
-  color: #d0d0d0;
+  color: #ff474b;
 }
 .bull-mine {
-  color: #b2ceef;
+  color: #357fd3;
 }
 /*
  * Hora
@@ -48,40 +48,40 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    display: inline-block;
     float: left;
     border-style: solid;
     border-width: 1px;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
-    box-shadow: none;
     box-shadow: 1px 1px 4px #D0D0D0;
     moz-box-shadow: 1px 1px 4px #D0D0D0;
     border-radius: 5.2px;
     padding: 13px;
-    margin-bottom: 19.5px;
-    margin-right: 19.5px;
+    margin-bottom: 16.900000000000002px;
+    margin-right: 16.900000000000002px;
     width: 130px;
     height: 130px;
   }
   .hora hr {
-    background-color: #969696;
+    background-color: #353535;
     border: 0;
-    color: #969696;
+    color: #353535;
     height: 2.6px;
     width: 80%;
     margin-top: 0;
-    margin-bottom: 19.5px;
+    margin-bottom: 16.900000000000002px;
   }
   .hora .lbl-hora {
     letter-spacing: 1px;
-    color: #969696;
-    font-size: 18.571428571428573px;
+    color: #353535;
+    font-size: 19.5px;
     font-weight: bold;
   }
   .hora .lbl-reserva {
     letter-spacing: 1px;
-    color: #757575;
+    color: #222222;
     font-size: 32.5px;
     font-weight: bold;
     margin-top: -6.5px;
@@ -97,7 +97,7 @@
     margin-right: -13px;
     margin-top: -15px;
     top: 0px;
-    color: #757575;
+    color: #222222;
   }
   .pista {
     margin-top: 19.5px;
@@ -112,63 +112,64 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    display: inline-block;
     float: left;
     border-style: solid;
     border-width: 1px;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
-    box-shadow: none;
     box-shadow: 1px 1px 4px #D0D0D0;
     moz-box-shadow: 1px 1px 4px #D0D0D0;
-    border-radius: 3.6px;
-    padding: 9px;
-    margin-bottom: 13.5px;
-    margin-right: 13.5px;
-    width: 90px;
-    height: 90px;
+    border-radius: 3.4px;
+    padding: 8.5px;
+    margin-bottom: 11.049999999999999px;
+    margin-right: 11.049999999999999px;
+    width: 85px;
+    height: 85px;
   }
   .hora hr {
-    background-color: #969696;
+    background-color: #353535;
     border: 0;
-    color: #969696;
-    height: 1.8px;
+    color: #353535;
+    height: 1.7px;
     width: 80%;
     margin-top: 0;
-    margin-bottom: 13.5px;
+    margin-bottom: 11.049999999999999px;
   }
   .hora .lbl-hora {
     letter-spacing: 1px;
-    color: #969696;
-    font-size: 12.857142857142858px;
+    color: #353535;
+    font-size: 12.75px;
     font-weight: bold;
   }
   .hora .lbl-reserva {
     letter-spacing: 1px;
-    color: #757575;
-    font-size: 22.5px;
+    color: #222222;
+    font-size: 21.25px;
     font-weight: bold;
-    margin-top: -4.5px;
+    margin-top: -4.25px;
   }
   .hora .asterisk {
-    font-size: 30px;
+    font-size: 28.333333333333332px;
   }
   .bookmark {
-    font-size: 11.7px;
+    font-size: 11.05px;
     position: relative;
     overflow: hidden;
     float: left;
-    margin-right: -9px;
-    margin-top: -11px;
+    margin-right: -8.5px;
+    margin-top: -10.5px;
     top: 0px;
-    color: #757575;
+    color: #222222;
   }
   .pista {
-    margin-top: 13.5px;
-    margin-bottom: 45px;
+    margin-top: 12.75px;
+    margin-bottom: 42.5px;
   }
 }
 .horas {
+  text-align: center;
   margin-top: 10px;
   display: block;
   -webkit-transition: opacity 0.5s ease-in;
@@ -191,7 +192,7 @@
  * Hora libre
  */
 .libre {
-  text-shadow: 1px 1px 1px #ffffff;
+  text-shadow: 1px 1px 1px #eeeeee;
   border-color: #d0d0d0;
   background-color: #7ff092;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #7ff092), color-stop(1, #63cf75));
@@ -222,32 +223,23 @@
  * Hora ocupada
  */
 .ocupada {
-  text-shadow: 1px 1px 1px #ffffff;
+  text-shadow: 1px 1px 1px #555555;
   border-color: #d0d0d0;
-  background-color: #f2f2f2;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f2f2f2), color-stop(1, #eeeeee));
-  background-image: -o-linear-gradient(to bottom, #f2f2f2 0%, #eeeeee 100%);
-  background-image: -moz-linear-gradient(to bottom, #f2f2f2 0%, #eeeeee 100%);
-  background-image: -webkit-linear-gradient(top, #f2f2f2 0%, #eeeeee 100%);
-  background-image: -ms-linear-gradient(to bottom, #f2f2f2 0%, #eeeeee 100%);
-  background-image: linear-gradient(to bottom, #f2f2f2 0%, #eeeeee 100%);
+  background-color: #ff474b;
+}
+.ocupada .lbl-hora {
+  color: #ededed;
+}
+.ocupada .lbl-reserva {
+  color: #ededed;
+}
+.ocupada hr {
+  background-color: #ededed;
 }
 .ocupada:hover {
-  background-color: #fafafa;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fafafa), color-stop(1, #eeeeee));
-  background-image: -o-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
-  background-image: -moz-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
-  background-image: -webkit-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
-  background-image: -ms-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
-  background-image: linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
-  border-color: #bcbcbc;
-}
-.ocupada:active {
-  box-shadow: 3px 3px 5px #d0d0d0 inset;
-  moz-box-shadow: 3px 3px 5px #d0d0d0 inset;
-  background-color: #f2f2f2;
-  background-image: none;
-  border-color: #bcbcbc;
+  border-color: #d0d0d0;
+  box-shadow: none;
+  moz-box-shadow: none;
 }
 .pista-title {
   margin: 0 20px 0 0;
@@ -256,30 +248,39 @@
  * Hora mine
  */
 .mine {
-  text-shadow: 1px 1px 1px #ffffff;
+  text-shadow: 1px 1px 1px #555555;
   border-color: #d0d0d0;
-  background-color: #c3d9f2;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #c3d9f2), color-stop(1, #b2ceef));
-  background-image: -o-linear-gradient(to bottom, #c3d9f2 0%, #b2ceef 100%);
-  background-image: -moz-linear-gradient(to bottom, #c3d9f2 0%, #b2ceef 100%);
-  background-image: -webkit-linear-gradient(top, #c3d9f2 0%, #b2ceef 100%);
-  background-image: -ms-linear-gradient(to bottom, #c3d9f2 0%, #b2ceef 100%);
-  background-image: linear-gradient(to bottom, #c3d9f2 0%, #b2ceef 100%);
+  background-color: #468ad7;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #468ad7), color-stop(1, #357fd3));
+  background-image: -o-linear-gradient(to bottom, #468ad7 0%, #357fd3 100%);
+  background-image: -moz-linear-gradient(to bottom, #468ad7 0%, #357fd3 100%);
+  background-image: -webkit-linear-gradient(top, #468ad7 0%, #357fd3 100%);
+  background-image: -ms-linear-gradient(to bottom, #468ad7 0%, #357fd3 100%);
+  background-image: linear-gradient(to bottom, #468ad7 0%, #357fd3 100%);
+}
+.mine .lbl-hora {
+  color: #ededed;
+}
+.mine .lbl-reserva {
+  color: #ededed;
+}
+.mine hr {
+  background-color: #ededed;
 }
 .mine:hover {
-  background-color: #d4e4f6;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d4e4f6), color-stop(1, #b2ceef));
-  background-image: -o-linear-gradient(to bottom, #d4e4f6 0%, #b2ceef 100%);
-  background-image: -moz-linear-gradient(to bottom, #d4e4f6 0%, #b2ceef 100%);
-  background-image: -webkit-linear-gradient(top, #d4e4f6 0%, #b2ceef 100%);
-  background-image: -ms-linear-gradient(to bottom, #d4e4f6 0%, #b2ceef 100%);
-  background-image: linear-gradient(to bottom, #d4e4f6 0%, #b2ceef 100%);
+  background-color: #5f9adc;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5f9adc), color-stop(1, #357fd3));
+  background-image: -o-linear-gradient(to bottom, #5f9adc 0%, #357fd3 100%);
+  background-image: -moz-linear-gradient(to bottom, #5f9adc 0%, #357fd3 100%);
+  background-image: -webkit-linear-gradient(top, #5f9adc 0%, #357fd3 100%);
+  background-image: -ms-linear-gradient(to bottom, #5f9adc 0%, #357fd3 100%);
+  background-image: linear-gradient(to bottom, #5f9adc 0%, #357fd3 100%);
   border-color: #bcbcbc;
 }
 .mine:active {
-  box-shadow: 3px 3px 5px #b2ceef inset;
-  moz-box-shadow: 3px 3px 5px #b2ceef inset;
-  background-color: #c3d9f2;
+  box-shadow: 3px 3px 5px #357fd3 inset;
+  moz-box-shadow: 3px 3px 5px #357fd3 inset;
+  background-color: #468ad7;
   background-image: none;
   border-color: #bcbcbc;
 }

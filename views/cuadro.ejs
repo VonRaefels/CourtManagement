@@ -21,14 +21,14 @@
                 <div id="pistas" class="col-md-10">
                     <div class="page-header">
                         <ul class="nav nav-pills nav-dia">
+                            <li>
+                                <a href="#" id="info"><span class="glyphicon glyphicon-info-sign"></span></a>
+                            </li>
                             <li class="pill-dia" dia="hoy">
                                 <a href="#" id="hoy">Hoy</a>
                             </li>
                             <li class="pill-dia" dia="manana">
                                 <a href="#" id="manana">Mañana</a>
-                            </li>
-                            <li>
-                                <a href="#" id="info"><span class="glyphicon glyphicon-info-sign"></span></a>
                             </li>
                         </ul>
                         <h1><%= active.name %></h1>
@@ -38,8 +38,8 @@
             </div>
 
             <!-- Success reserva alert -->
-            <div id="success-reserva" class="alert alert-success flyover flyover-bottom">
-                <h4>¡Reserva realizada con <strong>exito</strong>!</h4>
+            <div id="success-reserva" class="alert-info jumbotron flyover flyover-centered">
+                <h3><strong>¡Reserva realizada con éxito</strong>!</h3>
                 <p>Su reserva se realizó <strong>correctamente</strong>, si lo desea
                     <strong>puede anularla</strong> haciendo click de nuevo sobre la reserva.
                 </p>
@@ -54,8 +54,8 @@
             </div>
 
             <!-- Success anulación alert -->
-            <div id="success-anulacion" class="alert alert-success flyover flyover-bottom">
-                <h4>Su reserva ha sido <strong>anulada</strong> correctamente</h4>
+            <div id="success-anulacion" class="alert-info jumbotron flyover flyover-centered">
+                <h3><strong>Reserva anulada correctamente</strong> </h3>
                 <p> Si lo desesa <strong>puede volver a reservar</strong> otra hora en cualquier otra pista.
                 </p>
             </div>

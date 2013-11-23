@@ -34,17 +34,17 @@
 
 .hora-mixin (@size){
     .unselectable();
+    display: inline-block;
     float: left;
     border-style: solid;
     border-width: 1px;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
-    box-shadow: none;
     box-shadow: 1px 1px 4px #D0D0D0;
     moz-box-shadow: 1px 1px 4px #D0D0D0;
 
-    @spacing: 15 * (@size / 100);
+    @spacing: 13 * (@size / 100);
     border-radius: 4 * (@size / 100);
     padding: 10 * (@size / 100);
     margin-bottom: @spacing;
@@ -65,7 +65,7 @@
     .lbl-hora {
         letter-spacing: 1px;
         color: @hora-text;
-        font-size: @size / 7;
+        font-size: (15 * @size) / 100;
         font-weight: bold;
     }
 

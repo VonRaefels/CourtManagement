@@ -119,7 +119,7 @@ var findPistasAndCuadros = function(idUrba, idCuadro, cb) {
 
 var findUserAndUrba = function(idUser, cb) {
     models.User.findById(idUser, function(err, user) {
-        if(err) {
+        if(err || !user) {
             return cb(true, null, null);
         }
         var jsonUser = user.toObject();
