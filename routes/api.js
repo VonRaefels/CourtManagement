@@ -65,13 +65,13 @@ horaActions['reservar'] = function reservar(req, res) {
     var user = req.user;
     helpers.puedeReservar(user, idHora, function(err, puede) {
         if(err) return res.send(500, {error: 'Could not do reserva'});
-        console.log(puede);
         if(!puede) {
             return res.json({max: true});
         }
         models.Hora.findOneAndUpdate({_id: idHora, _idUser: undefined},
             {_idUser: user._id, reserva: user.name}, function(err, hora) {
             if(err) return res.send(500, {error: 'Could not do reserva'});
+            if(!hora) return res.send(500, {error: 'Could not do anulacion'});
             res.json(hora);
         });
     })
@@ -82,6 +82,7 @@ horaActions['anular'] = function anular(req, res) {
     var idHora = req.param('id');
     var user = req.user;
     models.Hora.findById(idHora, function(err, hora) {
+        if(!hora) return res.send(500, {error: 'Could not do anulacion'});
         hora._idUser = undefined;
         hora.reserva = undefined;
         hora.save(function(err, hora) {

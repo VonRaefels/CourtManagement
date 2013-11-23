@@ -6,6 +6,15 @@ var showAlert = function(elId, time) {
     window.setTimeout(function() { $el.removeClass('in'); }, time);
 }
 
+events.on('selectDay', function(dia) {
+    App.destroyPopover();
+    $('.pill-dia').removeClass('active');
+    var $liDia = $('.nav-dia').find("li[dia='" + dia + "']");
+    $liDia.addClass('active');
+    $('.horas').removeClass('active');
+    $('.' + dia).addClass('active');
+});
+
 events.on('reserva', function(err, model) {
     if(err) {
         showAlert('error-reserva', 3500);
@@ -20,6 +29,7 @@ events.on('reserva', function(err, model) {
         }
     }
 });
+
 events.on('anulacion', function(err, hora) {
     if(err) {
         showAlert('error-anulacion', 3500);
@@ -34,6 +44,11 @@ events.on('anulacion', function(err, hora) {
 var PistaView = Backbone.View.extend({
     initialize: function() {
         this.children = {};
+        $(window).bind("resize.app", _.bind(this.resize, this));
+    },
+    remove: function() {
+        $(window).unbind("resize.app");
+        Backbone.View.prototype.remove.call(this);
     },
     id: function(){ return this.model.id; },
     tagName: 'div',
@@ -44,15 +59,10 @@ var PistaView = Backbone.View.extend({
         this.renderHoras();
         return this;
     },
-    events: {
-        'shown.bs.tab   a[data-toggle="tab"]'   : "layout"
-    },
-    layout: function(e) {
-        e.preventDefault();
-        App.destroyPopover();
-        var target = $(e.target).attr('href');
-        var masonry = $(target).find('.horas').data('masonry');
-        masonry.layout();
+    resize: function(e) {
+        this.$el.css("min-height", function(){
+            return $(this).find('active').height();
+        });
     },
     renderHoras: function() {
         var horas = this.model.horas;
@@ -66,6 +76,7 @@ var PistaView = Backbone.View.extend({
         var $el = this.$el;
         this.$hoy = $el.find('.hoy');
         this.$manana = $el.find('.manana');
+        this.$horas = $el.find('.horas');
     },
     renderHora: function(hora) {
         var horaView = new HoraView({model: hora});
@@ -118,7 +129,7 @@ var HoraView = Backbone.View.extend({
         this.$el.removeClass()
                 .addClass(className)
                 .addClass('hora')
-                .html(this.template(model)).fadeIn(350);
+                .html(this.template(model));
         return this;
     }
 });

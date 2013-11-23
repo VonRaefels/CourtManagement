@@ -1,4 +1,10 @@
 /*
+ * Nav
+ */
+.nav-dia {
+  float: right;
+}
+/*
  * Alerts and info
  */
 #info {
@@ -54,6 +60,7 @@
     border-radius: 5.2px;
     padding: 13px;
     margin-bottom: 19.5px;
+    margin-right: 19.5px;
     width: 130px;
     height: 130px;
   }
@@ -117,6 +124,7 @@
     border-radius: 3.6px;
     padding: 9px;
     margin-bottom: 13.5px;
+    margin-right: 13.5px;
     width: 90px;
     height: 90px;
   }
@@ -162,6 +170,15 @@
 }
 .horas {
   margin-top: 10px;
+  display: block;
+  -webkit-transition: opacity 0.5s ease-in;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+.horas.active {
+  opacity: 1;
+  height: auto;
 }
 .hora:hover {
   box-shadow: 4px 4px 4px #D0D0D0;

@@ -25,20 +25,8 @@ var App = {
 
             var $el = pistaView.render().$el;
             $('#pistas').append($el);
-            $hoy = pistaView.$hoy;
-            $manana = pistaView.$manana;
-
-            App.masonry($hoy);
-            App.masonry($manana);
         });
-    },
-    masonry: function($el) {
-        var $container = $($el);
-        $container.masonry({
-            isAnimated: true,
-            itemSelector: '.hora',
-            gutter: 10
-        });
+        events.trigger('selectDay', 'hoy');
     },
     showPopOver: function($el) {
         App.destroyPopover();
@@ -70,6 +58,9 @@ var App = {
     },
     events: function() {
         configureNavbar();
+        $('.pill-dia > a').on('click', function() {
+            events.trigger('selectDay', $(this).closest('li').attr('dia'));
+        });
     }
 }
 $(document).ready(App.init);
