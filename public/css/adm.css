@@ -1,0 +1,11 @@
+.model {
+  cursor: pointer;
+}
+.table-scroll {
+  height: 200px;
+  min-height: 300px;
+  overflow: auto;
+}
+.pagination {
+  float: left;
+}

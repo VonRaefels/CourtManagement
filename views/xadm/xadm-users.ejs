@@ -6,6 +6,7 @@
         <!-- Bootstrap -->
         <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link  href="/css/base.css" rel="stylesheet">
+        <link href="/css/adm.css" rel="stylesheet">
     </head>
     <body>
         <% include xadm-navbar %>
@@ -14,9 +15,101 @@
                 <h1>Usuarios</h1>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
+                    <ul class="pagination">
+                        <li class="previous-page"><a href="#">&laquo</a></li>
+                        <li class="active" ><span contenteditable="true" id="page"></span></li>
+                        <li class="next-page"><a href="#">&raquo</a></li>
+                        <div class="input-group col-md-2">
+                            <span class="input-group-btn">
+                                <button id="btn-page" class="btn btn-default" type="button">Ok</button>
+                            </span>
+                            <input id="inp-page" type="text" class="form-control">
+                        </div>
+                    </ul>
+
+                    <table class="table table-hover table-bordered table-striped table-scroll">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Urbanizacion</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users">
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="/js/lib/underscore.js"></script>
+        <script src="/js/lib/backbone.js"></script>
+        <script>
+            var User = Backbone.Model.extend({
+                idAttribute: '_id',
+                url: '/api/users'
+            });
+
+             var Users = Backbone.Collection.extend({
+                model: User,
+                url: '/api/users'
+             });
+
+             var UserRow = Backbone.View.extend({
+                initialize: function(args) {
+                    this.doRender = args.render;
+                    this.model = args.model;
+                },
+                id: function() {return this.model.id; },
+                className: 'model',
+                tagName: 'tr',
+                render: function() {
+                    this.$el.html(this.doRender(this.model));
+                    return this.$el;
+                }
+             });
+
+             var doRender = function(model) {
+                var html = ['<td>' + model.get('name') + '</td>',
+                           '<td>' + model.get('_urba').name + '</td>'].join('\n');
+                return html;
+             };
+
+             var users = new Users();
+
+             var fetch = function(page, options) {
+                if(page <= 0) { page = 1};
+                 users.fetch({
+                    data: $.param({page: page}),
+                    success: function(collection, response, options) {
+                        var $users = $('#users');
+                        $users.html('');
+                        users.each(function(user) {
+                            $users.append(new UserRow({render: doRender, model: user}).render());
+                        });
+                        PAGE = page;
+                        $('#page').html(PAGE);
+                    },
+                    error: function(collection, response, options) {
+                    }
+                 });
+             };
+
+             var PAGE = 1;
+
+             $('.next-page').on('click', function(e) {
+                fetch(PAGE + 1, {});
+             });
+
+              $('.previous-page').on('click', function(e) {
+                fetch(PAGE - 1, {});
+             });
+
+              $('#btn-page').on('click', function(e) {
+                fetch($('#inp-page').val());
+              });
+
+            fetch(1, {});
+        </script
     </body>
 </html>

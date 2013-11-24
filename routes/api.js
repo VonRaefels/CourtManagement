@@ -116,7 +116,8 @@ exports.getUser = function(req, res) {
 
 
 exports.findUsers = function(req, res) {
-    admHelpers.paginateUsers(function(err, users) {
+    var query = req.query;
+    admHelpers.paginateUsers(query, function(err, users) {
         if(err) return res.send(500, {error: 'Could not retrieve users'});
         res.json(users);
     });
