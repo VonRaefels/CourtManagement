@@ -5,7 +5,7 @@ var paginateUsers = function(opts, cb) {
     var options = opts;
     var callback = cb;
     if(typeof opts == 'function') {options = {};  callback = opts;}
-    models.User.find(options).populate('_idUrba')
+    models.User.find(options).populate('_urba')
             .exec(function(err, users) {
                 callback(err, users);
           });

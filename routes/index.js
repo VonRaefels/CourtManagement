@@ -2,7 +2,7 @@ var helpers = require('../models/helpers');
 
 exports.cuadro = function(req, res) {
     var idCuadro = req.params.id;
-    var idUrba = req.user._idUrba;
+    var idUrba = req.user._urba;
     var reqUser = req.user;
     helpers.findPistasAndCuadros(idUrba, idCuadro, function(err, cuadros, pistas) {
         if(err) return res.send(500, {error: 'Could not retrieve pistas or cuadros'});
@@ -16,7 +16,7 @@ exports.cuadro = function(req, res) {
 }
 
 exports.index = function(req, res) {
-    var idUrba = req.user._idUrba;
+    var idUrba = req.user._urba;
     var user = req.user;
     helpers.findCuadros(idUrba, function(err, cuadros) {
         if(err) {

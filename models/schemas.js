@@ -27,7 +27,7 @@ var User = new Schema(
         name        : {type: String, required: true},
         pwd         : {type: String, required: true},
         xadm        : {type: Boolean, required: false},
-        _idUrba     : {type: ObjectId, required: true, ref: 'Urbanizacion'}
+        _urba       : {type: ObjectId, required: true, ref: 'Urbanizacion'}
     },
     {
         collection  : 'User'
@@ -60,7 +60,7 @@ var User = new Schema(
 var Cuadro = new Schema(
     {
         name        : {type: String, required: true},
-        _idUrba     : {type: ObjectId, required: true, ref: 'Urbanizacion'},
+        _urba     : {type: ObjectId, required: true, ref: 'Urbanizacion'},
         startHour   : {type: Date, required: true},
         lastDate    : {type: Date},
         duration    : {type: Number, required: true},

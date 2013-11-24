@@ -16,7 +16,7 @@ PistasStrategy.prototype.authenticate = function(req, options) {
     var user = {
         name: req.body.name,
         password: req.body.password,
-        _idUrba: req.body._idUrba
+        _urba: req.body._urba
     }
     , _this = this;
 

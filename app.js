@@ -20,7 +20,7 @@ var app = module.exports = express.createServer();
 
 
 passport.use(new Strategies.PistasStrategy(function(user, done) {
-  var data = {name: user.name, password: user.password, _idUrba: user._idUrba};
+  var data = {name: user.name, password: user.password, _urba: user._urba};
   models.User.findOne(data, function(err, _user) {
       if(err || !_user) {
         done(true, null);

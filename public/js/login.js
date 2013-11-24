@@ -5,7 +5,7 @@ $(document).ready(function() {
             var username = $('#username').val();
             var password = $('#password').val();
             var urba = $('#urbas').select2("val");
-            var data = {name: username, password: password, _idUrba: urba};
+            var data = {name: username, password: password, _urba: urba};
             $.ajax({
                 type: 'POST',
                 url: '/login',

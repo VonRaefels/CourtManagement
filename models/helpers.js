@@ -10,7 +10,7 @@ var findUrbas = function(cb) {
 }
 
 var findCuadros = function(idUrba, cb) {
-    models.Cuadro.find({_idUrba: idUrba}).sort([['name', 'descending']]).exec(function(err, cuadros) {
+    models.Cuadro.find({_urba: idUrba}).sort([['name', 'descending']]).exec(function(err, cuadros) {
         cb(err, cuadros);
     });
 }
@@ -123,7 +123,7 @@ var findUserAndUrba = function(idUser, cb) {
             return cb(true, null, null);
         }
         var jsonUser = user.toObject();
-        models.Urbanizacion.findById(jsonUser._idUrba, function(err, urba) {
+        models.Urbanizacion.findById(jsonUser._urba, function(err, urba) {
             cb(err, jsonUser, urba);
         });
     });
