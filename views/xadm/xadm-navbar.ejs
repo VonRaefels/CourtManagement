@@ -1,0 +1,34 @@
+<header role="banner" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/xadm">
+                Administración
+            </a>
+        </div>
+        <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <% for(key in links) { %>
+                    <% var link = links[key]; %>
+                    <li
+                        <% if(key === active) { %>
+                            class="active"
+                        <% } %>
+                    >
+                        <a href="<%= link.href %>"><%= link.name %></a>
+                    </li>
+                <% } %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/xadm/logout">Salir</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

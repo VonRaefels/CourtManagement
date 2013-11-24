@@ -61,6 +61,12 @@ var App = {
         $('.pill-dia > a').on('click', function() {
             events.trigger('selectDay', $(this).closest('li').attr('dia'));
         });
+        $('body').on('click', function(e) {
+            $popover = $('#info');
+            if (!$popover.is(e.target) && $popover.has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                $popover.popover('hide');
+            }
+        });
     }
 }
 $(document).ready(App.init);

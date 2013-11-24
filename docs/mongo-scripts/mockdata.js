@@ -18,7 +18,7 @@ startHour.setMinutes('00');
 
 
 var idUrbas = [ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId()];
-var idUsers = [ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId()];
+var idUsers = [ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId()];
 var idCuadros = [ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId()]
 var idPistas = [ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId(), ObjectId()];
 
@@ -35,6 +35,8 @@ db.User.save({_id: idUsers[2], _idUrba: idUrbas[0], name: '13', password: '12345
 db.User.save({_id: idUsers[3], _idUrba: idUrbas[0], name: '14', password: '12345'});
 db.User.save({_id: idUsers[4], _idUrba: idUrbas[0], name: '15', password: '12345'});
 db.User.save({_id: idUsers[5], _idUrba: idUrbas[0], name: '16', password: '12345'});
+db.User.save({_id: idUsers[6], _idUrba: idUrbas[0], name: '0', password: '1', xadm: true});
+
 
 db.Cuadro.save({_id: idCuadros[0], _idUrba: idUrbas[0], name: 'Tenis', startHour: startHour, duration: 60, limit: 15, max: 1});
 db.Cuadro.save({_id: idCuadros[1], _idUrba: idUrbas[0], name: 'Padel', startHour: startHour, duration: 90, limit: 10, max: 1});

@@ -20,9 +20,9 @@ events.on('reserva', function(err, model) {
         showAlert('error-reserva', 3500);
     }else {
         if(model.max) {
-            showAlert('maximo-reservas-error', 6500);
+            showAlert('maximo-reservas-error', 5500);
         }else {
-            showAlert('success-reserva', 6500);
+            showAlert('success-reserva', 5500);
             var pistaView = App.views.pistas[model.collection.pista.id];
             App.user.putReserva(model);
             pistaView.repaintHora(model);
@@ -32,9 +32,9 @@ events.on('reserva', function(err, model) {
 
 events.on('anulacion', function(err, hora) {
     if(err) {
-        showAlert('error-anulacion', 6500);
+        showAlert('error-anulacion', 5500);
     }else {
-        showAlert('success-anulacion', 6500);
+        showAlert('success-anulacion', 5500);
         var pistaView = App.views.pistas[hora.collection.pista.id];
         App.user.removeReserva(hora);
         pistaView.repaintHora(hora);

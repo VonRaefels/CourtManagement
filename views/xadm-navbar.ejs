@@ -1,0 +1,35 @@
+<header role="banner" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <%= user.urba.name %>
+            </a>
+        </div>
+        <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <% links.forEach(function(link, index) { %>
+                    <li
+                        <% if(link.active) { %>
+                            class="active"
+                        <% } %>
+                    >
+                        <a href="<%= link.href %>"><%= link.name %></a>
+                    </li>
+                <% }); %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <button type="button" class="navbar-btn btn btn-primary" id="logout-btn">
+                        <span class="glyphicon glyphicon-log-out"></span>&nbsp&nbsp&nbspSalir
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

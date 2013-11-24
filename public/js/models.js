@@ -87,12 +87,9 @@ var Hora = Backbone.Model.extend({
     },
     parse: function(response, options) {
         if(response.max) return response;
-        console.log(response.hora);
         var hora = new Date(response.hora);
-        console.log(hora);
         var horaString = String('00' + hora.getHours()).slice(-2)
                          + ':' + String('00' + hora.getMinutes()).slice(-2);
-        console.log(horaString);
         response.hora = horaString;
         return response;
     },

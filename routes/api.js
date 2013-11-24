@@ -1,6 +1,7 @@
 var passport = require('passport');
     helpers = require('../models/helpers')
-    , models = require('../models/schemas');
+    , models = require('../models/schemas')
+    , admHelpers = require('../models/admHelpers');
 
 
 exports.getHoras = function(req, res) {
@@ -8,10 +9,16 @@ exports.getHoras = function(req, res) {
     helpers.areThereHours(idPista, function(err, areThereHours) {
         if(err) return res.send(500, {error: 'Could not retrieve horas'});
         if(areThereHours) {
-            helpers.isNewDay(idPista, function(err, isNewDay) {
-                if(err) return (true, null);
-                if(isNewDay) {
+            helpers.daysPassed(idPista, function(err, days) {
+                console.log(days);
+                if(err || !days) return (true, null);
+                if(days >= 1 && days < 2) {
                     helpers.changeHoras(idPista, function(err, horas) {
+                        if(err) return res.send(500, {error: 'Could not retrieve horas'});
+                        res.json(horas);
+                    });
+                }else if(days >= 2) {
+                    helpers.resetHoras(idPista, function(err, horas) {
                         if(err) return res.send(500, {error: 'Could not retrieve horas'});
                         res.json(horas);
                     });
@@ -104,5 +111,14 @@ exports.getUser = function(req, res) {
     helpers.findUser(reqUser._id, function(err, user) {
         if(err) return res.send(500, {error: 'Could not find user'});
         res.json(user);
+    });
+}
+
+
+exports.findUsers = function(req, res) {
+    console.log('hola');
+    admHelpers.paginateUsers(function(err, users) {
+        if(err) return res.send(500, {error: 'Could not retrieve users'});
+        res.json(users);
     });
 }

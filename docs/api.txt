@@ -4,30 +4,29 @@ POST /api/reserva/:id -> Se envía en el payload el número escogido de pista (S
 POST /api/login/ -> Realiza el login y crea la sesión.
 
 
-------------- Esquema de pantallas ----------------
+--------------------- Esquema de pantallas -------------------------
 1. Pantalla de Home, permite al usuario loguearse, darse de alta en el sistema y ofrece una breve descripción del funcionamiento del sistema,
     ¿Últimas reservas?
 2. Pantalla de pistas (Tenis o Padel), una página con un sistema grid mediante masonry por cada pista.
----------------------------------------------------
+--------------------------------------------------------------------
 
 
 
 --- TO DO ---
--> Mejorar notificiaciones de reserva para moviles.
 -> Encriptar contraseña con mongoose....
--> Cambiar a rojo las ocupadas
+-> Bug cuando pasa un dia se queda la reserva antigua en el usuario...
 
 -> Demostración en la pantalla de inicio de como usar el sistema
 -> Ajax polling para las horas cada 10 segundos.
--> Si han pasado dos días borrar todas las horas.
+
 -> Pantalla de login con más opciones, descripción del sistema?, contacto, precios
--> Cuando una pista esta reservada mostrar aviso...
 -> Mostrar fechas...
+-> Semaforos
 
 -> Problema firefox movil...
 -> Problema iconos navegador nativo android.
 
+-> Número de reservas por usuario máximas, limitar por urbanización.
 
 --------------------------------- Alertas ---------------------------------------
 -> MUCHO CUIADADO CUANDO MONGO NO ENCUENTRA DATOS Y SE USAN, DA UNDEFINED Y ERROR.
--> SI NADIE RESERVA EN UN DIA CUIDADO!

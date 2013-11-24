@@ -141,7 +141,7 @@ var areThereHours = function areThereHours(idPista, cb) {
     });
 }
 
-var isNewDay = function isNewDay(idPista, cb) {
+var daysPassed = function daysPassed(idPista, cb) {
     var findPista = function findPista(callback) {
         findPistaById(idPista, function(err, pista) {
             callback(err, pista._idCuadro);
@@ -156,11 +156,11 @@ var isNewDay = function isNewDay(idPista, cb) {
             var lastDate = cuadro.lastDate;
             var startHour = cuadro.startHour;
 
-            lastDate.setDate(lastDate.getDate() + 1);
+            lastDate.setDate(lastDate.getDate());
             lastDate.setHours(startHour.getHours());
             lastDate.setMinutes(startHour.getMinutes());
 
-            cb(null, today > lastDate);
+            cb(null, (today - lastDate) / 86400000);
         });
     };
     async.waterfall([findPista], checkDate);
@@ -269,16 +269,32 @@ var changeHoras = function changeHoras(idPista, cb) {
     async.waterfall([doDeleteHoras, doSwapHoras, doCreateHorasManana], doFindHoras);
 }
 
+var resetHoras = function resetHoras(idPista, cb) {
+    var deleteHoras = function(callback) {
+        models.Hora.remove({_idPista: idPista}, function(err) {
+            callback(err);
+        });
+    }
+    var doCreateHoras = function(err) {
+        if(err) return cb(true, null);
+        createHorasDia(idPista, function(err, horas) {
+            return cb(err, horas);
+        });
+    }
+    async.waterfall([deleteHoras], doCreateHoras);
+}
+
 exports.findUrbas = findUrbas;
 exports.findCuadros = findCuadros;
 exports.findPistas = findPistas;
 exports.findPistasAndCuadros = findPistasAndCuadros;
 exports.findUserAndUrba = findUserAndUrba;
 exports.createHoras = createHorasDia;
-exports.isNewDay = isNewDay;
+exports.daysPassed = daysPassed;
 exports.areThereHours = areThereHours;
 exports.findHoras = findHoras;
 exports.changeHoras = changeHoras;
 exports.createHorasDia = createHorasDia;
 exports.findUser = findUser;
 exports.puedeReservar = puedeReservar;
+exports.resetHoras = resetHoras;

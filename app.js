@@ -10,15 +10,16 @@ var express = require('express')
   , path = require('path')
   , pubDir = path.join(__dirname, 'public')
   , passport = require('passport')
-  , PistasStrategy = require('./routes/strategy')
+  , Strategies = require('./routes/strategy')
   , mongoose = require('mongoose')
   , models = require('./models/schemas')
-  , helpers = require('./models/helpers');
+  , helpers = require('./models/helpers')
+  , adm = require('./routes/adm');
 
 var app = module.exports = express.createServer();
 
 
-passport.use(new PistasStrategy(function(user, done) {
+passport.use(new Strategies.PistasStrategy(function(user, done) {
   var data = {name: user.name, password: user.password, _idUrba: user._idUrba};
   models.User.findOne(data, function(err, _user) {
       if(err || !_user) {
@@ -27,6 +28,14 @@ passport.use(new PistasStrategy(function(user, done) {
         done(null, _user);
       }
     });
+}));
+
+passport.use(new Strategies.XAdmStrategy(function(user, done) {
+  var data = {name: user.name, password: user.password, xadm: true};
+  models.User.findOne(data, function(err, _user) {
+    if(err) return done(true, null);
+    done(null, _user);
+  });
 }));
 
 passport.serializeUser(function(user, done) {
@@ -87,22 +96,48 @@ var auth = function auth(options) {
       res.redirect(options.failureRedirect);
     }
   }
-}
+};
+
+var xauth = function xauth(options) {
+  return function _auth(req, res, next){
+    if(req.user && req.user.xadm) {
+      next();
+    }else {
+      res.redirect(options.failureRedirect);
+    }
+  }
+};
 
 
 // Routes
 // TO DO Get urbas
 app.get('/api/pistas/:id/horas', auth({failureRedirect: '/api/unathorized'}), api.getHoras);
 app.get('/api/cuadros/:id/pistas', auth({failureRedirect: '/api/unathorized'}), api.getPistas);
-app.get('/api/user', auth({failureRedirect: 'api/unathorized'}), api.getUser);
+app.get('/api/user', auth({failureRedirect: '/api/unathorized'}), api.getUser);
+app.get('/api/users', api.findUsers);
 app.get('/api/unathorized', api.unathorized);
-app.post('/api/horas/:id', auth({failureRedirect: 'api/unathorized'}), api.postHora);
+app.post('/api/horas/:id', auth({failureRedirect: '/api/unathorized'}), api.postHora);
 
 app.post('/login', api.login);
 app.get('/', auth({failureRedirect: '/login'}), routes.index);
 app.get('/login', routes.login);
 app.get('/logout', routes.logout);
 app.get('/cuadros/:id', auth({failureRedirect: '/login'}), routes.cuadro);
+
+
+app.get('/xadm', xauth({failureRedirect: '/xadm/login/'}), function(req, res) {
+  res.redirect('/xadm/users');
+});
+app.get('/xadm/users', xauth({failureRedirect: '/xadm/login/'}), adm.xadmUsers);
+app.get('/xadm/urbas', xauth({failureRedirect: '/xadm/login/'}), adm.xadmUrbas);
+app.get('/xadm/login', adm.xadmLogin);
+app.post('/xadm/login', adm.xlogin);
+app.get('/xadm/logout', function(req, res) {
+  req.logout();
+  res.redirect('/xadm/login');
+});
+
+
 
 
 app.listen(3000, function(){

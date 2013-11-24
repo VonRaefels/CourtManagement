@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
-var config = require('../config/config');
+var config = require('../config/config'),
+    bcrypt = require('bcryptjs'),
+    SALT_WORK_FACTOR = 10;
 
 mongoose.connect(config.dbLocation);
 
@@ -24,12 +26,36 @@ var User = new Schema(
     {
         name        : {type: String, required: true},
         pwd         : {type: String, required: true},
+        xadm        : {type: Boolean, required: false},
         _idUrba     : {type: ObjectId, required: true, ref: 'Urbanizacion'}
     },
     {
         collection  : 'User'
     }
 );
+
+// User.pre('save', function(next) {
+//     var user = this;
+
+//     if (!user.isModified('pwd')) return next();
+//     bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+//         if (err) return next(err);
+
+//         bcrypt.hash(user.pwd, salt, function(err, hash) {
+//             if (err) return next(err);
+
+//             user.pwd = hash;
+//             next();
+//         });
+//     });
+// });
+
+// User.methods.comparePassword = function(candidatePassword, cb) {
+//     bcrypt.compare(candidatePassword, this.pwd, function(err, isMatch) {
+//         if (err) return cb(err);
+//         cb(null, isMatch);
+//     });
+// };
 
 var Cuadro = new Schema(
     {
